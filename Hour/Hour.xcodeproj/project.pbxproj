@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD091230E27EE00A5CCA2 /* AppDelegate.swift */; };
-		800FD094230E27EE00A5CCA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD093230E27EE00A5CCA2 /* ViewController.swift */; };
+		800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */; };
 		800FD097230E27EE00A5CCA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD095230E27EE00A5CCA2 /* Main.storyboard */; };
 		800FD09A230E27EE00A5CCA2 /* Hour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 800FD098230E27EE00A5CCA2 /* Hour.xcdatamodeld */; };
 		800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800FD09B230E27F100A5CCA2 /* Assets.xcassets */; };
 		800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD09D230E27F100A5CCA2 /* LaunchScreen.storyboard */; };
 		800FD0AA230E27F100A5CCA2 /* HourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0A9230E27F100A5CCA2 /* HourTests.swift */; };
 		800FD0B5230E27F100A5CCA2 /* HourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0B4230E27F100A5CCA2 /* HourUITests.swift */; };
+		800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0C4230E2C3600A5CCA2 /* ActivityCell.swift */; };
+		800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800FD0C5230E2C3600A5CCA2 /* ActivityCell.xib */; };
+		800FD0CA230E306600A5CCA2 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0C9230E306600A5CCA2 /* ActivityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,7 @@
 /* Begin PBXFileReference section */
 		800FD08E230E27EE00A5CCA2 /* Hour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800FD091230E27EE00A5CCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		800FD093230E27EE00A5CCA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOverviewVC.swift; sourceTree = "<group>"; };
 		800FD096230E27EE00A5CCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		800FD099230E27EE00A5CCA2 /* Hour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hour.xcdatamodel; sourceTree = "<group>"; };
 		800FD09B230E27F100A5CCA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		800FD0B0230E27F100A5CCA2 /* HourUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HourUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		800FD0B4230E27F100A5CCA2 /* HourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourUITests.swift; sourceTree = "<group>"; };
 		800FD0B6230E27F100A5CCA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		800FD0C4230E2C3600A5CCA2 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		800FD0C5230E2C3600A5CCA2 /* ActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		800FD0C9230E306600A5CCA2 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		800FD085230E27EE00A5CCA2 = {
 			isa = PBXGroup;
 			children = (
+				800FD0C8230E304400A5CCA2 /* Model */,
+				800FD0C2230E2BD400A5CCA2 /* Cell */,
 				800FD090230E27EE00A5CCA2 /* Hour */,
 				800FD0A8230E27F100A5CCA2 /* HourTests */,
 				800FD0B3230E27F100A5CCA2 /* HourUITests */,
@@ -100,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				800FD091230E27EE00A5CCA2 /* AppDelegate.swift */,
-				800FD093230E27EE00A5CCA2 /* ViewController.swift */,
+				800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */,
 				800FD095230E27EE00A5CCA2 /* Main.storyboard */,
 				800FD09B230E27F100A5CCA2 /* Assets.xcassets */,
 				800FD09D230E27F100A5CCA2 /* LaunchScreen.storyboard */,
@@ -126,6 +134,23 @@
 				800FD0B6230E27F100A5CCA2 /* Info.plist */,
 			);
 			path = HourUITests;
+			sourceTree = "<group>";
+		};
+		800FD0C2230E2BD400A5CCA2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				800FD0C4230E2C3600A5CCA2 /* ActivityCell.swift */,
+				800FD0C5230E2C3600A5CCA2 /* ActivityCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		800FD0C8230E304400A5CCA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				800FD0C9230E306600A5CCA2 /* ActivityModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +259,7 @@
 			files = (
 				800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */,
 				800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */,
+				800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */,
 				800FD097230E27EE00A5CCA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,8 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				800FD094230E27EE00A5CCA2 /* ViewController.swift in Sources */,
+				800FD0CA230E306600A5CCA2 /* ActivityModel.swift in Sources */,
+				800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */,
 				800FD09A230E27EE00A5CCA2 /* Hour.xcdatamodeld in Sources */,
+				800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */,
 				800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
