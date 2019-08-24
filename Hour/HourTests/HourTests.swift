@@ -11,17 +11,21 @@ import XCTest
 
 class HourTests: XCTestCase {
 
+    let elapsedTimeList: [TimeInterval] = [123, 1861, 23, 453, 4672, 83484]
+    let expectedTimeForDisplayList: [String] = ["00:02:03", "00:31:01", "00:00:23", "00:07:33", "01:17:52", "23:11:24"]
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testUtilities() {
+        for idx in 0..<elapsedTimeList.count {
+            XCTAssertEqual(convertSecsToTime(elapsedTimeList[idx]), expectedTimeForDisplayList[idx])
+        }
     }
 
     func testPerformanceExample() {
@@ -29,6 +33,13 @@ class HourTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func convertSecsToTime(_ elapsedTime: TimeInterval) -> String {
+        let hour = Int(elapsedTime)/3600
+        let minute = (Int(elapsedTime) % 3600)/60
+        let second = (Int(elapsedTime) % 3600) % 60
+        return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
 
 }

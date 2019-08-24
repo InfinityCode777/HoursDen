@@ -11,5 +11,11 @@ import UIKit
 public struct ActivityModel {
     var category: String
     var name: String
-    var activitDesc: String?
+    var desc: String?
+    
+    init(category: String, name: String, desc: String) {
+        self.category = category
+        self.name = name
+        self.desc = name
+    }
 }

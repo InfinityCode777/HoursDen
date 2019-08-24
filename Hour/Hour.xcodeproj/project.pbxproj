@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF224230F394200A10830 /* ActivityButton.swift */; };
+		2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2372310765B00A10830 /* ColorPalette.PNG */; };
+		2DBEF23B2310765B00A10830 /* Note.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2382310765B00A10830 /* Note.JPG */; };
+		2DBEF2402310805500A10830 /* PubSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF23F2310805500A10830 /* PubSub.swift */; };
+		2DBEF2462311B3DD00A10830 /* ExtTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */; };
 		800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD091230E27EE00A5CCA2 /* AppDelegate.swift */; };
 		800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */; };
-		800FD097230E27EE00A5CCA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD095230E27EE00A5CCA2 /* Main.storyboard */; };
+		800FD097230E27EE00A5CCA2 /* ActivityOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */; };
 		800FD09A230E27EE00A5CCA2 /* Hour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 800FD098230E27EE00A5CCA2 /* Hour.xcdatamodeld */; };
 		800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800FD09B230E27F100A5CCA2 /* Assets.xcassets */; };
 		800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD09D230E27F100A5CCA2 /* LaunchScreen.storyboard */; };
@@ -38,10 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DBEF224230F394200A10830 /* ActivityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
+		2DBEF2372310765B00A10830 /* ColorPalette.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPalette.PNG; sourceTree = "<group>"; };
+		2DBEF2382310765B00A10830 /* Note.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Note.JPG; sourceTree = "<group>"; };
+		2DBEF23F2310805500A10830 /* PubSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSub.swift; sourceTree = "<group>"; };
+		2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTimeInterval.swift; sourceTree = "<group>"; };
 		800FD08E230E27EE00A5CCA2 /* Hour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800FD091230E27EE00A5CCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOverviewVC.swift; sourceTree = "<group>"; };
-		800FD096230E27EE00A5CCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		800FD096230E27EE00A5CCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ActivityOverview.storyboard; sourceTree = "<group>"; };
 		800FD099230E27EE00A5CCA2 /* Hour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hour.xcdatamodel; sourceTree = "<group>"; };
 		800FD09B230E27F100A5CCA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		800FD09E230E27F100A5CCA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,9 +92,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DBEF222230F390200A10830 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2DBEF224230F394200A10830 /* ActivityButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2DBEF2352310727000A10830 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2DBEF2382310765B00A10830 /* Note.JPG */,
+				2DBEF2372310765B00A10830 /* ColorPalette.PNG */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2DBEF23D23107FD200A10830 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2DBEF23E23107FDF00A10830 /* PubSub */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2DBEF23E23107FDF00A10830 /* PubSub */ = {
+			isa = PBXGroup;
+			children = (
+				2DBEF23F2310805500A10830 /* PubSub.swift */,
+			);
+			path = PubSub;
+			sourceTree = "<group>";
+		};
 		800FD085230E27EE00A5CCA2 = {
 			isa = PBXGroup;
 			children = (
+				2DBEF23D23107FD200A10830 /* Utility */,
+				2DBEF2352310727000A10830 /* Resources */,
+				2DBEF222230F390200A10830 /* UI */,
 				800FD0C8230E304400A5CCA2 /* Model */,
 				800FD0C2230E2BD400A5CCA2 /* Cell */,
 				800FD090230E27EE00A5CCA2 /* Hour */,
@@ -109,11 +155,12 @@
 			children = (
 				800FD091230E27EE00A5CCA2 /* AppDelegate.swift */,
 				800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */,
-				800FD095230E27EE00A5CCA2 /* Main.storyboard */,
+				800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */,
 				800FD09B230E27F100A5CCA2 /* Assets.xcassets */,
 				800FD09D230E27F100A5CCA2 /* LaunchScreen.storyboard */,
 				800FD0A0230E27F100A5CCA2 /* Info.plist */,
 				800FD098230E27EE00A5CCA2 /* Hour.xcdatamodeld */,
+				2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */,
 			);
 			path = Hour;
 			sourceTree = "<group>";
@@ -260,7 +307,9 @@
 				800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */,
 				800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */,
 				800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */,
-				800FD097230E27EE00A5CCA2 /* Main.storyboard in Resources */,
+				2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */,
+				800FD097230E27EE00A5CCA2 /* ActivityOverview.storyboard in Resources */,
+				2DBEF23B2310765B00A10830 /* Note.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +336,10 @@
 			files = (
 				800FD0CA230E306600A5CCA2 /* ActivityModel.swift in Sources */,
 				800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */,
+				2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */,
+				2DBEF2402310805500A10830 /* PubSub.swift in Sources */,
 				800FD09A230E27EE00A5CCA2 /* Hour.xcdatamodeld in Sources */,
+				2DBEF2462311B3DD00A10830 /* ExtTimeInterval.swift in Sources */,
 				800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */,
 				800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */,
 			);
@@ -325,12 +377,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		800FD095230E27EE00A5CCA2 /* Main.storyboard */ = {
+		800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				800FD096230E27EE00A5CCA2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = ActivityOverview.storyboard;
 			sourceTree = "<group>";
 		};
 		800FD09D230E27F100A5CCA2 /* LaunchScreen.storyboard */ = {
@@ -465,13 +517,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A3GHL87D55;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = Hour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jackalope..Hour;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Jackalope..Hour-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,13 +535,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A3GHL87D55;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = Hour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jackalope..Hour;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Jackalope..Hour-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,7 +554,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RKGM2W93YG;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = HourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,7 +575,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RKGM2W93YG;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = HourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,7 +595,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RKGM2W93YG;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = HourUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +615,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RKGM2W93YG;
+				DEVELOPMENT_TEAM = 6VAQ3TTJGF;
 				INFOPLIST_FILE = HourUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

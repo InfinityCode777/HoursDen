@@ -13,7 +13,7 @@
         <!--Activity OverviewVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ActivityOverviewVC" customModule="Hour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityOverview" id="BYZ-38-t0r" customClass="ActivityOverviewVC" customModule="Hour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,10 +29,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivityCellType1" id="hGd-pO-7oH" customClass="ActivityCell" customModule="Hour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1.5" width="201" height="201"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="201" height="201"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="201" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqa-V4-xDn">
@@ -49,25 +49,28 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-Zk-u5e">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-Zk-u5e" customClass="ActivityButton" customModule="Hour" customModuleProvider="target">
                                                     <rect key="frame" x="40" y="70" width="121" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="27"/>
                                                     <state key="normal" title="00:00:00">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onStartBtnTapped:" destination="hGd-pO-7oH" eventType="touchUpInside" id="g8n-Dw-h28"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.29518818855285645" green="0.52023744583129883" blue="0.77768033742904663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="201" height="201"/>
                                         <connections>
-                                            <outlet property="activitySubtitle" destination="ISA-cM-lrW" id="SdL-rt-2Zt"/>
-                                            <outlet property="activityTitle" destination="hqa-V4-xDn" id="rF6-1x-qFm"/>
+                                            <outlet property="startBtn" destination="Nuo-Zk-u5e" id="qOV-WQ-W1g"/>
+                                            <outlet property="subtitle" destination="ISA-cM-lrW" id="SdL-rt-2Zt"/>
+                                            <outlet property="title" destination="hqa-V4-xDn" id="rF6-1x-qFm"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aGE-aq-Dna">
-                                        <rect key="frame" x="211" y="0.0" width="201" height="204"/>
+                                        <rect key="frame" x="213" y="0.0" width="201" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="201" height="204"/>
@@ -78,7 +81,6 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2Yn-GU-8A8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5YP-CC-Jfu"/>
                             <constraint firstItem="2Yn-GU-8A8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8Rp-R8-Gen"/>
@@ -94,6 +96,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="57.971014492753625" y="20.758928571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eTz-n9-6KQ">
+            <objects>
+                <viewController id="k0g-QL-olF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hgx-hF-2zX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Kd0-kv-wpb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJe-ot-j4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="21"/>
         </scene>
     </scenes>
 </document>
