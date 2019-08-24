@@ -25,13 +25,25 @@ class ActivityButton: UIButton {
 extension ActivityButton {
     func setTitle(_ title: String?, for state: UIControl.State, animated: Bool = false ) {
         
+        //        if !animated {
+        //            UIView.setAnimationsEnabled(false)
+        //            setTitle(title, for: state)
+        //            layoutIfNeeded()
+        //            UIView.setAnimationsEnabled(true)
+        //        }
+        //        else {
+        //            setTitle(title, for: state)
+        //        }
         if !animated {
-            UIView.setAnimationsEnabled(false)
-            setTitle(title, for: state)
-            layoutIfNeeded()
-            UIView.setAnimationsEnabled(true)
-        } else {
+            UIView.performWithoutAnimation {
+                self.setTitle(title, for: state)
+                layoutIfNeeded()
+            }
+        }
+        else {
             setTitle(title, for: state)
         }
+        
+        
     }
 }

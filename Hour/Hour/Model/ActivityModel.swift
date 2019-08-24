@@ -11,11 +11,13 @@ import UIKit
 public struct ActivityModel {
     var category: String
     var name: String
+    var UID: UUID
     var desc: String?
     
-    init(category: String, name: String, desc: String) {
+    init(category: String, name: String, desc: String?, UID: UUID) {
         self.category = category
         self.name = name
         self.desc = name
+        self.UID = UID
     }
 }

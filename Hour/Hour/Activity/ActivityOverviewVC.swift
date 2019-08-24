@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivityOverviewVC: UIViewController {
+class ActivityOverviewVC: ActivityBaseVC {
 
     
     @IBOutlet weak var activityOverview: UICollectionView!
@@ -33,13 +33,15 @@ class ActivityOverviewVC: UIViewController {
         flowLayout?.minimumInteritemSpacing = 12
         
         
-        activityList = [ActivityModel(category: "Work", name: "dev", desc: nil),
-        ActivityModel(category: "Work", name: "meeting", desc: nil),
-        ActivityModel(category: "Work", name: "office chore", desc: nil),
-        ActivityModel(category: "Work", name: "data collection", desc: nil),
-        ActivityModel(category: "Work", name: "tech support", desc: nil),
-        ActivityModel(category: "Work", name: "commute", desc: nil),
-        ActivityModel(category: "Work", name: "lunch", desc: nil)]
+        activityList = [
+            ActivityModel(category: "Work", name: "dev", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "meeting", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "office chore", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "data collection", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "tech support", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "commute", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "lunch", desc: nil, UID: UUID())
+        ]
         
         
         
@@ -98,4 +100,11 @@ extension ActivityOverviewVC {
         }
     }
     
+}
+
+
+extension ActivityOverviewVC {
+     func prepare(for segue: UIStoryboardSegue, sender: ActivityCell) {
+        
+    }
 }

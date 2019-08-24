@@ -67,6 +67,7 @@
                                             <outlet property="startBtn" destination="Nuo-Zk-u5e" id="qOV-WQ-W1g"/>
                                             <outlet property="subtitle" destination="ISA-cM-lrW" id="SdL-rt-2Zt"/>
                                             <outlet property="title" destination="hqa-V4-xDn" id="rF6-1x-qFm"/>
+                                            <segue destination="k0g-QL-olF" kind="showDetail" id="lv9-Sj-QUI"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aGE-aq-Dna">

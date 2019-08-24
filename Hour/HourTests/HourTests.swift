@@ -24,7 +24,11 @@ class HourTests: XCTestCase {
 
     func testUtilities() {
         for idx in 0..<elapsedTimeList.count {
-            XCTAssertEqual(convertSecsToTime(elapsedTimeList[idx]), expectedTimeForDisplayList[idx])
+            XCTAssertEqual(convertSecsToTime(elapsedTimeList[idx]), expectedTimeForDisplayList[idx], "Does not match expected format!")
+        }
+        
+        for idx in 0..<elapsedTimeList.count {
+            XCTAssertEqual(elapsedTimeList[idx].toDisplayTime(), expectedTimeForDisplayList[idx], "Does not match expected format!")
         }
     }
 
