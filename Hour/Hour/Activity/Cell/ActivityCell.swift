@@ -18,7 +18,7 @@ enum TimeStatus {
 class ActivityCell: UICollectionViewCell {
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subtitle: UILabel!
+//    @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var startBtn: ActivityButton!
     
     // Elapsed time in second
@@ -74,8 +74,8 @@ class ActivityCell: UICollectionViewCell {
     }
     
     func loadData() {
-        self.title.text = activity?.category
-        self.subtitle.text = activity?.name
+        self.title.text = activity?.name
+//        self.subtitle.text = activity?.name
         //        self.desc = activity?.desc
     }
 
