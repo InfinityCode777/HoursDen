@@ -23,14 +23,17 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        flowLayout = activityOverview.collectionViewLayout as? UICollectionViewFlowLayout
-        
         var activityCellWidth = (UIScreen.main.bounds.width - 12)/2.0
-//        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
+        //        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
         activityCellWidth = activityCellWidth.rounded(.down)
+
+        flowLayout = activityOverview.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.estimatedItemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
         flowLayout?.minimumLineSpacing = 12
         flowLayout?.minimumInteritemSpacing = 12
+        
+        let activityCellNib = UINib(nibName: "\(ActivityCell.self)", bundle: nil)
+        activityOverview.register(activityCellNib, forCellWithReuseIdentifier: "Type1")
         
         
         activityList = [
@@ -68,7 +71,7 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
         
         
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCellType1", for: indexPath) as! ActivityCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Type1", for: indexPath) as! ActivityCell
         let activity = activityList[indexPath.row]
         
         cell.activity = activity

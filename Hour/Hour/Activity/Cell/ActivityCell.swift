@@ -20,12 +20,13 @@ class ActivityCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
 //    @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var startBtn: ActivityButton!
+    @IBOutlet weak var canvasView: UIView!
     
     // Elapsed time in second
     private var elapsedTime: TimeInterval = 0
     
     private var timerStatus: TimeStatus = .stopped
-    
+    private var UIDebug: Bool = false
     
     //TOTO we need to fnd way to link model with view/cell
     public var activity: ActivityModel? { didSet {
@@ -66,6 +67,15 @@ class ActivityCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        if !UIDebug {
+            canvasView.backgroundColor = UIColor.clear
+            title.backgroundColor = UIColor.clear
+            startBtn.backgroundColor = UIColor.clear
+        }
+        
+        startBtn.titleLabel?.numberOfLines = 1
+        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+
     }
     
     override func prepareForInterfaceBuilder() {

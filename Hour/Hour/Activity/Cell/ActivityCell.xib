@@ -11,13 +11,78 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ActivityCell" customModule="Hour" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Type1" id="gTV-IL-0wX" customClass="ActivityCell" customModule="Hour" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKu-7J-9xa">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wKw-aC-Him">
+                                <rect key="frame" x="8" y="8" width="255" height="51"/>
+                                <color key="backgroundColor" red="0.30375107019999997" green="0.85185806480000004" blue="0.18996147259999999" alpha="0.68530607880000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wKw-aC-Him" secondAttribute="height" multiplier="5:1" id="BOq-sk-uPL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp1-6i-uAY" customClass="ActivityButton" customModule="Hour" customModuleProvider="target">
+                                <rect key="frame" x="60" y="90" width="180" height="120"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.63137254899999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gp1-6i-uAY" secondAttribute="height" multiplier="3:2" id="hS1-dj-Uhe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="46"/>
+                                <state key="normal" title="00:00:00">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStartBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="yiK-x5-0n3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USw-2r-Mk0">
+                                <rect key="frame" x="267" y="8" width="30" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="USw-2r-Mk0" secondAttribute="height" multiplier="10:17" id="5S8-PT-Rfc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <state key="normal" title="...">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="leading" secondItem="tKu-7J-9xa" secondAttribute="leading" constant="8" id="3DY-R6-s7K"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="centerY" secondItem="tKu-7J-9xa" secondAttribute="centerY" id="49A-Db-Qa9"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="Ax4-Pi-cOJ"/>
+                            <constraint firstItem="USw-2r-Mk0" firstAttribute="leading" secondItem="wKw-aC-Him" secondAttribute="trailing" constant="4" id="FpQ-Zk-5vO"/>
+                            <constraint firstItem="USw-2r-Mk0" firstAttribute="centerY" secondItem="wKw-aC-Him" secondAttribute="centerY" id="GYw-Tn-TUi"/>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="top" secondItem="tKu-7J-9xa" secondAttribute="top" constant="8" id="JgN-oF-zUo"/>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" multiplier="255/300" id="WDE-jV-wmh"/>
+                            <constraint firstItem="USw-2r-Mk0" firstAttribute="height" secondItem="wKw-aC-Him" secondAttribute="height" id="uhI-e1-QYd"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" multiplier="180/300" id="yR0-DM-p77"/>
+                        </constraints>
+                    </view>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tKu-7J-9xa" secondAttribute="bottom" id="GoD-2O-9cy"/>
+                <constraint firstItem="tKu-7J-9xa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pk4-28-oIX"/>
+                <constraint firstAttribute="trailing" secondItem="tKu-7J-9xa" secondAttribute="trailing" id="SJ6-eN-CSQ"/>
+                <constraint firstItem="tKu-7J-9xa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="j1q-mQ-5Fw"/>
+            </constraints>
+            <connections>
+                <outlet property="canvasView" destination="tKu-7J-9xa" id="rZ3-b2-DdF"/>
+                <outlet property="startBtn" destination="gp1-6i-uAY" id="QkL-92-LQl"/>
+                <outlet property="title" destination="wKw-aC-Him" id="lH8-ee-tqe"/>
+            </connections>
+            <point key="canvasLocation" x="534.78260869565224" y="17.410714285714285"/>
         </collectionViewCell>
     </objects>
 </document>

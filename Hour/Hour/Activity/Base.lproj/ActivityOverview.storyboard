@@ -56,9 +56,6 @@
                                                     <state key="normal" title="00:00:00">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="onStartBtnTapped:" destination="hGd-pO-7oH" eventType="touchUpInside" id="g8n-Dw-h28"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -69,8 +66,6 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outlet property="startBtn" destination="Nuo-Zk-u5e" id="qOV-WQ-W1g"/>
-                                            <outlet property="title" destination="hqa-V4-xDn" id="rF6-1x-qFm"/>
                                             <segue destination="k0g-QL-olF" kind="showDetail" id="lv9-Sj-QUI"/>
                                         </connections>
                                     </collectionViewCell>
