@@ -75,8 +75,9 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
         let activity = activityList[indexPath.row]
         
         cell.activity = activity
-        cell.backgroundColor = colorTable[indexPath.row % 8]
-        
+//        cell.backgroundColor = colorTable[indexPath.row % 8]
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = colorTable[indexPath.row % 8]
         cell.startButtonTappedHandler = { [weak self] sender in
             self?.onStartBtnTapped(sender)
         }

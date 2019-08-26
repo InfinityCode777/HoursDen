@@ -22,6 +22,9 @@ class ActivityCell: UICollectionViewCell {
     @IBOutlet weak var startBtn: ActivityButton!
     @IBOutlet weak var canvasView: UIView!
     
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    
     // Elapsed time in second
     private var elapsedTime: TimeInterval = 0
     
@@ -45,7 +48,6 @@ class ActivityCell: UICollectionViewCell {
     public func pauseTimer() {
         
     }
-    
     public func stopTimer() {
         timerStatus = .stopped
         PubSub.shared.unregister(.UpdateTimer, listner: self)
@@ -71,11 +73,19 @@ class ActivityCell: UICollectionViewCell {
             canvasView.backgroundColor = UIColor.clear
             title.backgroundColor = UIColor.clear
             startBtn.backgroundColor = UIColor.clear
+            timerLabel.backgroundColor = UIColor.clear
         }
         
-        startBtn.titleLabel?.numberOfLines = 1
-        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-
+//        startBtn.titleLabel?.numberOfLines = 1
+//        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+//        timerLabel.adjustsFontSizeToFitWidth = true
+//        title.adjustsFontSizeToFitWidth = true
+        
+        contentView.layer.cornerRadius = 5
+        contentView.layer.masksToBounds = true
+        
+//        canvasView.layer.cornerRadius = 5
+//        canvasView.layer.masksToBounds = true
     }
     
     override func prepareForInterfaceBuilder() {
@@ -87,6 +97,8 @@ class ActivityCell: UICollectionViewCell {
         self.title.text = activity?.name
 //        self.subtitle.text = activity?.name
         //        self.desc = activity?.desc
+        title.setFontToFitHeight()
+        timerLabel.setFontToFitHeight()
     }
 
     
@@ -101,6 +113,7 @@ class ActivityCell: UICollectionViewCell {
 extension ActivityCell: Listner {
     func onEvent(_ event: Event, userInfo: Any) {
         elapsedTime += 1
-        startBtn.setTitle(elapsedTime.toDisplayTime(), for: .normal, animated: false)
+//        startBtn.setTitle(elapsedTime.toDisplayTime(), for: .normal, animated: false)
+        timerLabel.text = elapsedTime.toDisplayTime()
     }
 }
