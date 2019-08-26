@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D25A181231330BC00DA1F5B /* FoundryGridnikBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */; };
+		2D25A182231330BC00DA1F5B /* FoundryGridnik-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */; };
+		2D25A183231330BC00DA1F5B /* FoundryGridnikMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */; };
 		2D2A19FE2312019F00D9D2E2 /* ActivityBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */; };
 		2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF224230F394200A10830 /* ActivityButton.swift */; };
 		2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2372310765B00A10830 /* ColorPalette.PNG */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikBold.otf; sourceTree = "<group>"; };
+		2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FoundryGridnik-Regular.otf"; sourceTree = "<group>"; };
+		2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikMedium.otf; sourceTree = "<group>"; };
 		2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBaseVC.swift; sourceTree = "<group>"; };
 		2DBEF224230F394200A10830 /* ActivityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
 		2DBEF2372310765B00A10830 /* ColorPalette.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPalette.PNG; sourceTree = "<group>"; };
@@ -94,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D25A17D231330B000DA1F5B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */,
+				2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */,
+				2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		2D2A19FF2312026000D9D2E2 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +178,7 @@
 		800FD090230E27EE00A5CCA2 /* Hour */ = {
 			isa = PBXGroup;
 			children = (
+				2D25A17D231330B000DA1F5B /* Font */,
 				2D2A19FF2312026000D9D2E2 /* Activity */,
 				2DBEF23D23107FD200A10830 /* Utility */,
 				2DBEF2352310727000A10830 /* Resources */,
@@ -317,10 +334,13 @@
 			files = (
 				800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */,
 				800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */,
+				2D25A183231330BC00DA1F5B /* FoundryGridnikMedium.otf in Resources */,
 				800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */,
 				2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */,
 				800FD097230E27EE00A5CCA2 /* ActivityOverview.storyboard in Resources */,
 				2DBEF23B2310765B00A10830 /* Note.JPG in Resources */,
+				2D25A181231330BC00DA1F5B /* FoundryGridnikBold.otf in Resources */,
+				2D25A182231330BC00DA1F5B /* FoundryGridnik-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

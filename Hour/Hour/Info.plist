@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FoundryGridnik-Regular.otf</string>
+		<string>FoundryGridnikBold.otf</string>
+		<string>FoundryGridnikMedium.otf</string>
+	</array>
 </dict>
 </plist>
