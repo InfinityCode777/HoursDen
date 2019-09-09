@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Anchorage
 
 class ActivityOverviewVC: ActivityBaseVC {
 
@@ -19,11 +20,11 @@ class ActivityOverviewVC: ActivityBaseVC {
     var activityTimer: Timer?
     var flowLayout: UICollectionViewFlowLayout?
     var testCounter: Int = 0
-    
+    var activityCellWidth: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var activityCellWidth = (UIScreen.main.bounds.width - 12)/2.0
+        activityCellWidth = (UIScreen.main.bounds.width - 12)/2.0
         //        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
         activityCellWidth = activityCellWidth.rounded(.down)
 
@@ -82,6 +83,7 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
             self?.onStartBtnTapped(sender)
         }
         
+//        cell.sizeAnchors == CGSize(width: activityCellWidth, height: activityCellWidth)
         
         return cell
     }

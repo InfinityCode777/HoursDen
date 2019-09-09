@@ -13,6 +13,7 @@ public struct ActivityModel {
     var name: String
     var UID: UUID
     var desc: String?
+    var color: UIColor?
     
     init(category: String, name: String, desc: String?, UID: UUID) {
         self.category = category
