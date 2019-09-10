@@ -16,22 +16,31 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     
     var activityList = [ActivityModel]()
-    var colorTable:[UIColor] = [#colorLiteral(red: 0.2951881886, green: 0.5202374458, blue: 0.7776803374, alpha: 1), #colorLiteral(red: 0.6425715685, green: 0.1104490235, blue: 0.01544517558, alpha: 1), #colorLiteral(red: 0.7791575789, green: 0.7919260263, blue: 0.9991839528, alpha: 1), #colorLiteral(red: 0.6648513079, green: 0.2806694508, blue: 0.528647542, alpha: 1), #colorLiteral(red: 0.7375733256, green: 0.5681271553, blue: 0.1588199437, alpha: 1), #colorLiteral(red: 0.9983283877, green: 0.709824264, blue: 0.6186549067, alpha: 1), #colorLiteral(red: 0.9165030122, green: 0.7589698434, blue: 0.9985856414, alpha: 1), #colorLiteral(red: 0.2929282188, green: 0.5532175899, blue: 0.2777415812, alpha: 1)]
+    var colorTable:[UIColor] = [#colorLiteral(red: 0.6862745098, green: 0.0431372549, blue: 0.2196078431, alpha: 1), #colorLiteral(red: 0.7529411765, green: 0.06666666667, blue: 0, alpha: 1), #colorLiteral(red: 0.8117647059, green: 0.2980392157, blue: 0, alpha: 1), #colorLiteral(red: 0.8431372549, green: 0.5254901961, blue: 0, alpha: 1), #colorLiteral(red: 0.5019607843, green: 0.01568627451, blue: 0.6235294118, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1803921569, blue: 0.7450980392, alpha: 1), #colorLiteral(red: 0.1529411765, green: 0.5764705882, blue: 0.003921568627, alpha: 1)]
     var activityTimer: Timer?
     var flowLayout: UICollectionViewFlowLayout?
     var testCounter: Int = 0
     var activityCellWidth: CGFloat = 0
+    var itemSpacing: CGFloat = (19/375)*UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityCellWidth = (UIScreen.main.bounds.width - 12)/2.0
+        
+        itemSpacing = itemSpacing.rounded()
+        
+        activityCellWidth = (UIScreen.main.bounds.width - 3*itemSpacing)/2.0
         //        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
         activityCellWidth = activityCellWidth.rounded(.down)
 
         flowLayout = activityOverview.collectionViewLayout as? UICollectionViewFlowLayout
-        flowLayout?.estimatedItemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
-        flowLayout?.minimumLineSpacing = 12
-        flowLayout?.minimumInteritemSpacing = 12
+        flowLayout?.itemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
+//        flowLayout?.estimatedItemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
+        flowLayout?.minimumLineSpacing = itemSpacing
+        flowLayout?.minimumInteritemSpacing = itemSpacing
+        flowLayout?.sectionInset = UIEdgeInsets(top: 0,
+                                                left: itemSpacing,
+                                                bottom: 0,
+                                                right: itemSpacing)
         
         let activityCellNib = UINib(nibName: "\(ActivityCell.self)", bundle: nil)
         activityOverview.register(activityCellNib, forCellWithReuseIdentifier: "Type1")
@@ -47,7 +56,9 @@ class ActivityOverviewVC: ActivityBaseVC {
             ActivityModel(category: "Work", name: "lunch", desc: nil, UID: UUID())
         ]
         
-        
+        for idx in 0..<activityList.count {
+            activityList[idx].bgColor = colorTable[idx % 8]
+        }
         
         activityOverview.delegate = self
         activityOverview.dataSource = self
@@ -83,11 +94,11 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
             self?.onStartBtnTapped(sender)
         }
         
+
 //        cell.sizeAnchors == CGSize(width: activityCellWidth, height: activityCellWidth)
         
         return cell
     }
-    
     
 }
 
@@ -96,7 +107,7 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
 // Callback handling from ActivityCell
 extension ActivityOverviewVC {
     
-    func onStartBtnTapped(_ sender: ActivityButton) {
+    func onStartBtnTapped(_ sender: ActivityCell) {
         if activityTimer == nil {
             activityTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] _ in
                 PubSub.shared.post(.UpdateTimer, userInfo: [])
@@ -105,8 +116,25 @@ extension ActivityOverviewVC {
 //                
             })
         }
+//        if let activityCell = activityOverview.visibleCells.first as? ActivityCell {
+//            print("activityCell.timerLabel.frame >> \(activityCell.timerLabel.frame)")
+//        }
+        
+        sender.title.setFontToFitHeight()
+        sender.timerLabel.text = (TimeInterval(0)).toDisplayTime()
+        //        timerLabel.setFontToFitHeight()
+        sender.timerLabel.setKernSpacing()
+        sender.timerLabel.setFontToFit()
+
     }
     
+    override func viewDidLayoutSubviews() {
+//        if activityOverview.visibleCells.count > 0 {
+//            if let activityCell = activityOverview.visibleCells.first as? ActivityCell {
+//            print("activityCell.timerLabel.frame >> \(activityCell.timerLabel.frame)")
+//            }
+//        }
+    }
 }
 
 
