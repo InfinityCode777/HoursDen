@@ -51,20 +51,20 @@ extension UILabel {
                 
                 textAndLabelHeightDiff = labelHeight - testStringHeight
                 
-                // Use to watch how font is converged
-                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+//                // Use to watch how font is converged
+//                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
+//                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
                 
                 
                 if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                     if (textAndLabelHeightDiff < 0) {
                         self.font = font.withSize(fontSizeAverage - 1)
-                        JLog.debug("Break 1", isShortMsg: true)
+//                        JLog.debug("Break 1", isShortMsg: true)
                         break
                     }
                     self.font = font.withSize(fontSizeAverage)
                     #if DEBUG
-                    JLog.debug("Break 2", isShortMsg: true)
+//                    JLog.debug("Break 2", isShortMsg: true)
                     #endif
                     break
                 }
@@ -77,18 +77,18 @@ extension UILabel {
                 }
                 else {
                     self.font = font.withSize(fontSizeAverage)
-                    JLog.debug("Break 3", isShortMsg: true)
+//                    JLog.debug("Break 3", isShortMsg: true)
                     break
                 }
             }
         }
         // By Jing, 8/26/19, it makes me uncomfortable to use fraction as font size
         self.font = font.withSize(fontSizeAverage.rounded(.down))
-//        self.font = font.withSize(fontSizeAverage)
+        //        self.font = font.withSize(fontSizeAverage)
         
-        JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
-        JLog.debug("Break 4", isShortMsg: true)
+        JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(self.font)", isShortMsg: true)
+//        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+//        JLog.debug("Break 4", isShortMsg: true)
         
     }
     
@@ -120,20 +120,20 @@ extension UILabel {
     //       }
     
     
-    public func setFontToFit() {
+    public func setFontToFit(scaleFactor: CGFloat = 1) {
         
         var minFontSize: CGFloat = 1
         var maxFontSize: CGFloat = 200
         var fontSizeAverage: CGFloat = 0
         var textAndLabelHeightDiff: CGFloat = 0
         var textAndLabelWidthDiff: CGFloat = 0
-
+        
         
         var labelHeight: CGFloat = 0
         var labelWidth: CGFloat = 0
         var testStringHeight: CGFloat = 0
         var testStringWidth: CGFloat = 0
-
+        
         
         while (minFontSize <= maxFontSize) {
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
@@ -161,24 +161,24 @@ extension UILabel {
                 testStringWidth = labelText.size(
                     withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]
                     ).width
-
+                
                 textAndLabelHeightDiff = labelHeight - testStringHeight
                 textAndLabelWidthDiff = labelWidth - testStringWidth
-
-                // Use to watch how font is converged
-                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+                
+//                // Use to watch how font is converged
+//                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
+//                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
                 
                 
                 if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                     if (textAndLabelHeightDiff < 0) || (textAndLabelWidthDiff < 0)  {
                         self.font = font.withSize(fontSizeAverage - 1)
-                        JLog.debug("Break 1", isShortMsg: true)
+//                        JLosg.debug("Break 1", isShortMsg: true)
                         break
                     }
                     self.font = font.withSize(fontSizeAverage.rounded(.down))
                     #if DEBUG
-                    JLog.debug("Break 2", isShortMsg: true)
+//                    JLog.debug("Break 2", isShortMsg: true)
                     #endif
                     break
                 }
@@ -191,39 +191,39 @@ extension UILabel {
                 }
                 else {
                     self.font = font.withSize(fontSizeAverage.rounded(.down))
-                    JLog.debug("Break 3", isShortMsg: true)
+//                    JLog.debug("Break 3", isShortMsg: true)
                     break
                 }
             }
         }
         // By Jing, 8/26/19, it makes me uncomfortable to use fraction as font size
-        self.font = font.withSize((fontSizeAverage*0.9).rounded(.down))
+        self.font = font.withSize((fontSizeAverage*scaleFactor).rounded(.down))
         //        self.font = font.withSize(fontSizeAverage)
         
-        JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
-        JLog.debug("Break 4", isShortMsg: true)
+        JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(self.font.pointSize)", isShortMsg: true)
+//        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+//        JLog.debug("Break 4", isShortMsg: true)
         
     }
     
-
+    
+    
+    func setKernSpacing(kernSpacing: CGFloat = 0.0) {
         
-        func setKernSpacing(kernSpacing: CGFloat = 0.0) {
-            
-            guard let labelText = text else { return }
-            
-            let attributedString: NSMutableAttributedString
-            if let labelAttributedText = attributedText {
-                attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
-            } else {
-                attributedString = NSMutableAttributedString(string: labelText)
-            }
-            
-            // Character spacing attribute
-            attributedString.addAttribute(NSAttributedString.Key.kern, value: kernSpacing, range: NSMakeRange(0, attributedString.length))
-            
-            attributedText = attributedString
+        guard let labelText = text else { return }
+        
+        let attributedString: NSMutableAttributedString
+        if let labelAttributedText = attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
         }
         
+        // Character spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: kernSpacing, range: NSMakeRange(0, attributedString.length))
+        
+        attributedText = attributedString
+    }
+    
     
 }
