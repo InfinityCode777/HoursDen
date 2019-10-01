@@ -50,9 +50,32 @@ class ActivityCell: UICollectionViewCell {
     private lazy var backdropView: UIView = {
         let view = UIView(frame: canvasView.frame)
         view.frame.size = CGSize(width: 10, height: 10)
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        //        view.layer.cornerRadius = 5
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         return view
     }()
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if !UIDebug {
+            title.backgroundColor = UIColor.clear
+            timerLabel.backgroundColor = UIColor.clear
+        }
+        
+        utilBtnGroup.append(startBtn)
+        utilBtnGroup.append(pauseBtn)
+        utilBtnGroup.append(resumeBtn)
+        utilBtnGroup.append(stopBtn)
+        
+        initUI()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        // TODO
+        initUI()
+    }
     
     
     public func resetTimer() {
@@ -60,7 +83,7 @@ class ActivityCell: UICollectionViewCell {
     
     public func startTimer() {
         timerStatus = .started
-        timerLabel.isHidden = false
+//        timerLabel.isHidden = false
         canvasView.backgroundColor = activity?.bgColor ?? .black
         title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65)
         //        startStopBtn.isHidden = true
@@ -73,7 +96,7 @@ class ActivityCell: UICollectionViewCell {
     
     public func stopTimer() {
         timerStatus = .stopped
-        timerLabel.isHidden = true
+//        timerLabel.isHidden = true
         canvasView.backgroundColor = .black
         title.textColor = activity?.bgColor ?? .lightGray
         //        startStopBtn.isHidden = false
@@ -107,7 +130,6 @@ class ActivityCell: UICollectionViewCell {
         switch timerStatus {
         case .started:
             PubSub.shared.register(.UpdateTimer, listner: self)
-            timerLabel.isHidden = false
             //            canvasView.backgroundColor = activity?.bgColor ?? .black
             title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65)
             enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
@@ -132,8 +154,12 @@ class ActivityCell: UICollectionViewCell {
                             self?.backdropView.alpha = 1
                             self?.startBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                             self?.startBtn.alpha = 0
-                            
+                            self?.timerLabel.transform = .identity
+                            self?.timerLabel.alpha = 1
+
                             self?.backdropView.bounds.size = self?.canvasView.bounds.size.scaleBy(sx: 0.95, sy: 0.95) ?? CGSize(width: 0.1, height: 0.1)
+                            
+                            //                            self?.backdropView.layer.cornerRadius = 5
                             
                             //                            let sx = ( self?.canvasView.bounds.size.width ?? 0 )/(self?.backdropView.bounds.width ?? 1)*1.2
                             //                            let sy = ( self?.canvasView.bounds.size.height ?? 0 )/(self?.backdropView.bounds.height ?? 1)*1.2
@@ -148,25 +174,45 @@ class ActivityCell: UICollectionViewCell {
                     self?.backdropView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
                     self?.backdropView.bounds.size = CGSize(width: 0.1, height: 0.1)
                     self?.backdropView.removeFromSuperview()
+                    self?.canvasView.borderWidth = 0
                     //                    self?.backdropView.transform = .identity
             })
         case .resumed:
             PubSub.shared.register(.UpdateTimer, listner: self)
             
             enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
-            animateResumeStop(status: timerStatus){ _ in
-                self.enableButton(self.utilBtnGroup, with: self.getArray(of: true, count: self.utilBtnGroup.count))
-                self.title.alpha = 1
-                self.canvasView.alpha = 1
-                
-            }
             
-            //            UIView.animate(withDuration: 0.2,
-            //                           animations: { [weak self] in
-            //                            self?.title.alpha = 1
-            //                            self?.canvasView.alpha = 1
-            //
-            //            })
+            
+            // Need to synchronize with this animation
+            //            animateResumeStop(status: timerStatus){ _ in
+            //                self.enableButton(self.utilBtnGroup, with: self.getArray(of: true, count: self.utilBtnGroup.count))
+            //                self.title.alpha = 1
+            //            }
+            
+            
+            
+            
+            resumeBtnTrailingContraint.constant = 0
+            stopBtnLeadingContraint.constant = 0
+            
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           options: [.curveEaseIn],
+                           animations: { [weak self] in
+                            self?.timerLabel.alpha = 1
+                            self?.timerLabel.transform = .identity
+                            
+                            self?.layoutIfNeeded()
+                }, completion: {_ in
+                    self.enableButton(self.utilBtnGroup, with: self.getArray(of: true, count: self.utilBtnGroup.count))
+//                        self.title.alpha = 1
+            })
+            
+            
+            
+            
+            
+            
             
             break
         case .stopped:
@@ -208,14 +254,20 @@ class ActivityCell: UICollectionViewCell {
                                 self.backdropView.alpha = 0
                                 self.startBtn.transform = .identity
                                 self.startBtn.alpha = 1
-                                self.canvasView.alpha = 1
+                                //                                self.canvasView.alpha = 1
                                 self.title.alpha = 1
-                                self.timerLabel.text = ""
-                                self.timerLabel.isHidden = true
+                                self.timerLabel.text = "00:00"
+                                self.timerLabel.alpha = 0
+                                self.canvasView.borderWidth = 3
+                                
+                                 self.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+                                 self.timerLabel.alpha = 0
+                                //                                self.backdropView.layer.cornerRadius = 5
                                 
                 },
                                completion:  {_ in
                                 self.startBtn.isEnabled = true
+                               
                 })
             })
             
@@ -235,11 +287,14 @@ class ActivityCell: UICollectionViewCell {
             // All above needs to happen immediately without delay
             layoutIfNeeded()
             
+            
             UIView.animate(withDuration: 0.2,
-                           delay: 0,
+                           delay: 0,options: [.curveEaseIn],
                            animations: { [weak self] in
-                            self?.title.alpha = 0.5
-                            self?.canvasView.alpha = 0.5
+                            self?.title.alpha = 0.8
+                            //                            self?.canvasView.alpha = 0.5
+                            self?.timerLabel.alpha = 0
+                            self?.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
                             
                 }, completion: { _ in
                     //                    self?.startBtn.isEnabled = false
@@ -275,26 +330,7 @@ class ActivityCell: UICollectionViewCell {
     }
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if !UIDebug {
-            title.backgroundColor = UIColor.clear
-            timerLabel.backgroundColor = UIColor.clear
-        }
-        
-        utilBtnGroup.append(startBtn)
-        utilBtnGroup.append(pauseBtn)
-        utilBtnGroup.append(resumeBtn)
-        utilBtnGroup.append(stopBtn)
-        
-        initUI()
-    }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        // TODO
-        initUI()
-    }
     
     func loadData() {
         self.title.text = activity?.name
@@ -311,7 +347,8 @@ class ActivityCell: UICollectionViewCell {
         startBtn.borderColor = activity?.bgColor ?? .lightGray
         canvasView.borderColor = activity?.bgColor ?? .lightGray
         title.textColor = activity?.bgColor ?? .white
-        timerLabel.isHidden = true
+        resumeBtn.setTitleColor(activity?.bgColor, for: .normal)
+        timerLabel.alpha = 0
         
     }
     
@@ -335,6 +372,8 @@ class ActivityCell: UICollectionViewCell {
     func initUI() {
         contentView.layer.cornerRadius = 5
         contentView.layer.masksToBounds = true
+        //        resumeBtn.setTitleColor(activity?.bgColor, for: .normal)
+        //        stopBtn.backgroundColor = activity?.bgColor
     }
     
     override func didMoveToSuperview() {
@@ -374,7 +413,7 @@ extension ActivityCell {
         
         UIView.animate(withDuration: 0.3,
                        delay: 0,
-                       options: [.curveEaseIn],
+                       options: [.curveEaseOut],
                        animations: { [weak self] in
                         self?.layoutIfNeeded()
             }, completion: {result in

@@ -50,7 +50,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llg-FS-Zul" userLabel="Resume Btn">
                                 <rect key="frame" x="-159" y="29.5" width="159" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="30"/>
                                 <state key="normal" title="Resume">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,10 +61,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv1-nR-LqM" userLabel="Finish Btn">
                                 <rect key="frame" x="159" y="79.5" width="159" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.81960784313725488" green="0.21176470588235294" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="30"/>
                                 <state key="normal" title="Finish">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onStopBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="AyU-8X-a9M"/>
