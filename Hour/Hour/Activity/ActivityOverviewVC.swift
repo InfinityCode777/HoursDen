@@ -53,11 +53,15 @@ class ActivityOverviewVC: ActivityBaseVC {
             ActivityModel(category: "Work", name: "data collection", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "tech support", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "commute", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "lunch", desc: nil, UID: UUID())
+            ActivityModel(category: "Work", name: "lunch", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "discuss", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "shop", desc: nil, UID: UUID()),
+            ActivityModel(category: "Work", name: "learn", desc: nil, UID: UUID())
+
         ]
         
         for idx in 0..<activityList.count {
-            activityList[idx].bgColor = colorTable[idx % 8]
+            activityList[idx].bgColor = colorTable[idx % 7]
         }
         
         activityOverview.delegate = self

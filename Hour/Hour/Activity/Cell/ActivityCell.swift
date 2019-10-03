@@ -78,30 +78,30 @@ class ActivityCell: UICollectionViewCell {
     }
     
     
-    public func resetTimer() {
-    }
-    
-    public func startTimer() {
-        timerStatus = .started
-//        timerLabel.isHidden = false
-        canvasView.backgroundColor = activity?.bgColor ?? .black
-        title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65)
-        //        startStopBtn.isHidden = true
-        PubSub.shared.register(.UpdateTimer, listner: self)
-    }
-    
-    public func pauseTimer() {
-        timerStatus = .paused
-    }
-    
-    public func stopTimer() {
-        timerStatus = .stopped
-//        timerLabel.isHidden = true
-        canvasView.backgroundColor = .black
-        title.textColor = activity?.bgColor ?? .lightGray
-        //        startStopBtn.isHidden = false
-        PubSub.shared.unregister(.UpdateTimer, listner: self)
-    }
+    //    public func resetTimer() {
+    //    }
+    //
+    //    public func startTimer() {
+    //        timerStatus = .started
+    //        timerLabel.isHidden = false
+    //        canvasView.backgroundColor = activity?.bgColor ?? .black
+    //        title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65)
+    //        //        startStopBtn.isHidden = true
+    //        PubSub.shared.register(.UpdateTimer, listner: self)
+    //    }
+    //
+    //    public func pauseTimer() {
+    //        timerStatus = .paused
+    //    }
+    //
+    //    public func stopTimer() {
+    //        timerStatus = .stopped
+    ////        timerLabel.isHidden = true
+    //        canvasView.backgroundColor = .black
+    //        title.textColor = activity?.bgColor ?? .lightGray
+    //        //        startStopBtn.isHidden = false
+    //        PubSub.shared.unregister(.UpdateTimer, listner: self)
+    //    }
     
     public var startButtonTappedHandler: ((_ sender: ActivityCell) -> ())?
     
@@ -130,7 +130,6 @@ class ActivityCell: UICollectionViewCell {
         switch timerStatus {
         case .started:
             PubSub.shared.register(.UpdateTimer, listner: self)
-            //            canvasView.backgroundColor = activity?.bgColor ?? .black
             title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65)
             enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
             backdropView.backgroundColor = activity?.bgColor ?? .black
@@ -139,31 +138,35 @@ class ActivityCell: UICollectionViewCell {
             
             //            backdropView.center = canvasView.center
             
-            
+            // Add the backdrop for animation
             canvasView.insertSubview(backdropView, at: 0)
             backdropView.center = canvasView.center
             
             // All above needs to happen immediately without delay
             layoutIfNeeded()
-            UIView.animate(withDuration: 0.5,
+            UIView.animate(withDuration: 0.3,
                            delay: 0,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 0,
                            options: [.curveEaseOut],
                            animations: { [weak self] in
                             self?.backdropView.alpha = 1
-                            self?.startBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                            self?.startBtn.alpha = 0
                             self?.timerLabel.transform = .identity
                             self?.timerLabel.alpha = 1
 
-                            self?.backdropView.bounds.size = self?.canvasView.bounds.size.scaleBy(sx: 0.95, sy: 0.95) ?? CGSize(width: 0.1, height: 0.1)
+                            // Start button disappears
+                            self?.startBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                            self?.startBtn.alpha = 0
+                            
+                            self?.backdropView.bounds.size = self?.canvasView.bounds.size.scaleBy(sx: 1.0, sy: 1.0) ?? CGSize(width: 0.1, height: 0.1)
+                            self?.layoutIfNeeded()
                             
                             //                            self?.backdropView.layer.cornerRadius = 5
                             
                             //                            let sx = ( self?.canvasView.bounds.size.width ?? 0 )/(self?.backdropView.bounds.width ?? 1)*1.2
                             //                            let sy = ( self?.canvasView.bounds.size.height ?? 0 )/(self?.backdropView.bounds.height ?? 1)*1.2
                             //                            self?.backdropView.transform = CGAffineTransform(scaleX: sx, y: sy)
+                            
                 }, completion: { [weak self] _ in
                     self?.startBtn.isEnabled = true
                     self?.pauseBtn.isEnabled = true
@@ -177,111 +180,80 @@ class ActivityCell: UICollectionViewCell {
                     self?.canvasView.borderWidth = 0
                     //                    self?.backdropView.transform = .identity
             })
-        case .resumed:
-            PubSub.shared.register(.UpdateTimer, listner: self)
+        case .stopped:
+            PubSub.shared.unregister(.UpdateTimer, listner: self)
+            canvasView.backgroundColor = .black
+            title.textColor = activity?.bgColor ?? .lightGray
+            layoutIfNeeded()
             
+            // Disable all button after tapping
             enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
             
             
+            canvasView.insertSubview(backdropView, at: 0)
+            backdropView.bounds = canvasView.bounds
+            backdropView.backgroundColor = activity?.bgColor
+            
+                resumeBtnTrailingContraint.constant = 0
+                stopBtnLeadingContraint.constant = 0
+            
+            UIView.animate(withDuration: 0.2,
+                           delay: 0,
+                           options: [.curveEaseOut],
+                           animations: {
+//                            self.layoutIfNeeded()
+                            self.backdropView.bounds.size = CGSize(width: 0.1, height: 0.1)
+                            self.backdropView.alpha = 0
+                            self.startBtn.transform = .identity
+                            self.startBtn.alpha = 1
+                            //                                self.canvasView.alpha = 1
+//                            self.title.alpha = 1
+                            self.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+//                            self.timerLabel.text = "00:00"
+                            self.timerLabel.alpha = 0
+                            self.canvasView.borderWidth = 3
+                            
+                            self.layoutIfNeeded()
+
+                            
+                }, completion: {_ in
+                    self.startBtn.isEnabled = true
+                    self.elapsedTime = 0
+//                    self.timerLabel.text = "00:00"
+
+
+            })
+            
+        case .resumed:
+            // Subscribe to timer
+            PubSub.shared.register(.UpdateTimer, listner: self)
+            // Disable all button after tapping
+            enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
+            
+            // // TODO:
             // Need to synchronize with this animation
             //            animateResumeStop(status: timerStatus){ _ in
             //                self.enableButton(self.utilBtnGroup, with: self.getArray(of: true, count: self.utilBtnGroup.count))
             //                self.title.alpha = 1
             //            }
             
-            
-            
-            
             resumeBtnTrailingContraint.constant = 0
             stopBtnLeadingContraint.constant = 0
             
             UIView.animate(withDuration: 0.3,
                            delay: 0,
-                           options: [.curveEaseIn],
+                           options: [.curveEaseOut],
                            animations: { [weak self] in
                             self?.timerLabel.alpha = 1
                             self?.timerLabel.transform = .identity
-                            
                             self?.layoutIfNeeded()
                 }, completion: {_ in
                     self.enableButton(self.utilBtnGroup, with: self.getArray(of: true, count: self.utilBtnGroup.count))
-//                        self.title.alpha = 1
             })
-            
-            
-            
-            
-            
-            
-            
-            break
-        case .stopped:
-            //            startTimer()
-            //            sender.alpha = 0.05
-            //            timerStatus = .stopped
-            PubSub.shared.unregister(.UpdateTimer, listner: self)
-            //            timerLabel.text = nil
-            //            timerLabel.isHidden = true
-            canvasView.backgroundColor = .black
-            title.textColor = activity?.bgColor ?? .lightGray
-            //                    startStopBtn.isHidden = false
-            enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
-            
-            //            animateResumeStop(status: timerStatus, completion: {[weak self]_ in
-            //                self?.title.alpha = 1
-            //                self?.canvasView.alpha = 1
-            //                            self?.timerLabel.text = ""
-            //                            self?.timerLabel.isHidden = true
-            //                self?.startBtn.alpha = 1
-            //                self?.startBtn.isEnabled = true
-            //                self?.startBtn.transform = .identity
-            //
-            //                TODO
-            //                set the color of content view instead of the canvas view and see what you can get
-            //
-            //            })
-            
-            canvasView.insertSubview(backdropView, at: 0)
-            backdropView.bounds = canvasView.bounds
-            backdropView.backgroundColor = activity?.bgColor
-            
-            animateResumeStop(status: timerStatus, completion: {_ in
-                UIView.animate(withDuration: 0.5,
-                               delay: 0,
-                               options: [.curveEaseOut],
-                               animations: {
-                                self.backdropView.bounds.size = CGSize(width: 0.1, height: 0.1)
-                                self.backdropView.alpha = 0
-                                self.startBtn.transform = .identity
-                                self.startBtn.alpha = 1
-                                //                                self.canvasView.alpha = 1
-                                self.title.alpha = 1
-                                self.timerLabel.text = "00:00"
-                                self.timerLabel.alpha = 0
-                                self.canvasView.borderWidth = 3
-                                
-                                 self.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
-                                 self.timerLabel.alpha = 0
-                                //                                self.backdropView.layer.cornerRadius = 5
-                                
-                },
-                               completion:  {_ in
-                                self.startBtn.isEnabled = true
-                               
-                })
-            })
-            
         case .paused:
-            //            timerLabel.isHidden = false
-            //            canvasView.backgroundColor = activity?.bgColor ?? .black
-            //            title.textColor = .white
+            // Unsubscribe from timer
             PubSub.shared.unregister(.UpdateTimer, listner: self)
-            //            startBtn.isEnabled = false
-            //            pauseBtn.isEnabled = false
-            //            resumeBtn.isEnabled = false
-            //            stopBtn.isEnabled = false
-            //            pauseBtn.alpha = 0
-            
+            // Disable all button after tapping
             enableButton(utilBtnGroup, with: getArray(of: false, count: utilBtnGroup.count))
             
             // All above needs to happen immediately without delay
@@ -291,20 +263,11 @@ class ActivityCell: UICollectionViewCell {
             UIView.animate(withDuration: 0.2,
                            delay: 0,options: [.curveEaseIn],
                            animations: { [weak self] in
-                            self?.title.alpha = 0.8
-                            //                            self?.canvasView.alpha = 0.5
+//                            self?.title.alpha = 0.8
                             self?.timerLabel.alpha = 0
                             self?.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
                             
                 }, completion: { _ in
-                    //                    self?.startBtn.isEnabled = false
-                    //                    self?.pauseBtn.isEnabled = false
-                    //                    self?.startBtn.isEnabled = true
-                    //                    self?.pauseBtn.isEnabled = true
-                    //                    self.title.alpha = 1
-                    //                    self.canvasView.alpha = 1
-                    
-                    
                     self.enableButton(self.utilBtnGroup, with: [false, false, true, true])
             })
             
@@ -327,6 +290,7 @@ class ActivityCell: UICollectionViewCell {
                 self?.stopBtn.isEnabled = true
             }
         }
+        
     }
     
     
@@ -359,7 +323,7 @@ class ActivityCell: UICollectionViewCell {
         //        contentView.layer.masksToBounds = true
         
         // TODO: This works but it is so stupid and so inefficient, the app need to update the font millions of times as long as the timer kicks
-        title.setFontToFit(scaleFactor: 0.9)
+        title.setFontToFit(scaleFactor: 1)
         timerLabel.setFontToFit(scaleFactor: 0.95)
         
         //        print("Trying to layout subviews!")
@@ -411,7 +375,7 @@ extension ActivityCell {
             stopBtnLeadingContraint.constant = 0
         }
         
-        UIView.animate(withDuration: 0.3,
+        UIView.animate(withDuration: 0.2,
                        delay: 0,
                        options: [.curveEaseOut],
                        animations: { [weak self] in
@@ -455,3 +419,54 @@ extension CGSize {
         return CGSize(width: self.width*sx, height: self.height*sy)
     }
 }
+
+
+
+// Code saved for .stopped (in order)
+
+
+//            animateResumeStop(status: timerStatus, completion: {[weak self]_ in
+//                self?.title.alpha = 1
+//                self?.canvasView.alpha = 1
+//                            self?.timerLabel.text = ""
+//                            self?.timerLabel.isHidden = true
+//                self?.startBtn.alpha = 1
+//                self?.startBtn.isEnabled = true
+//                self?.startBtn.transform = .identity
+//
+//                TODO
+//                set the color of content view instead of the canvas view and see what you can get
+//
+//            })
+//            timerLabel.text = "00:00"
+//            layoutIfNeeded()
+
+
+
+//            animateResumeStop(status: timerStatus, completion: {_ in
+//                UIView.animate(withDuration: 0.2,
+//                               delay: 0,
+//                               options: [.curveEaseOut],
+//                               animations: {
+//                                self.backdropView.bounds.size = CGSize(width: 0.1, height: 0.1)
+//                                self.backdropView.alpha = 0
+//                                self.startBtn.transform = .identity
+//                                self.startBtn.alpha = 1
+//                                //                                self.canvasView.alpha = 1
+//                                self.title.alpha = 1
+//                                self.timerLabel.text = "00:00"
+//                                self.timerLabel.alpha = 0
+//                                self.canvasView.borderWidth = 3
+//
+//                                self.timerLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+//                                self.timerLabel.alpha = 0
+//                                //                                self.backdropView.layer.cornerRadius = 5
+//
+//                },
+//                               completion:  {_ in
+//                                self.startBtn.isEnabled = true
+////                                self.timerLabel.alpha = 0
+//
+//                })
+//            })
+//            layoutIfNeeded()
