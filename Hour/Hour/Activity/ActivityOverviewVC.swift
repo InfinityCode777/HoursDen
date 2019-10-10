@@ -26,7 +26,7 @@ class ActivityOverviewVC: ActivityBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        itemSpacing = itemSpacing.rounded()
+        //        itemSpacing = itemSpacing.rounded()
         
         activityCellWidth = (UIScreen.main.bounds.width - 3*itemSpacing)/2.0
         //        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
@@ -57,7 +57,7 @@ class ActivityOverviewVC: ActivityBaseVC {
             ActivityModel(category: "Work", name: "discuss", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "shop", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "learn", desc: nil, UID: UUID())
-
+            
         ]
         
         for idx in 0..<activityList.count {
@@ -96,18 +96,8 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
             self?.onStartBtnTapped(sender)
         }
         
-        
-        //        cell.sizeAnchors == CGSize(width: activityCellWidth, height: activityCellWidth)
-        
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//    }
-
     
 }
 
@@ -118,41 +108,15 @@ extension ActivityOverviewVC {
     
     func onStartBtnTapped(_ sender: ActivityCell) {
         if activityTimer == nil {
-            activityTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[weak self] _ in
+            activityTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
                 PubSub.shared.post(.UpdateTimer, userInfo: [])
-                //                self?.testCounter += 1
-                //                print("TimerStarts >> Tick >> \(self?.testCounter) ")
-                //
             })
         }
-        //        if let activityCell = activityOverview.visibleCells.first as? ActivityCell {
-        //            print("activityCell.timerLabel.frame >> \(activityCell.timerLabel.frame)")
-        //        }
-        
-//        sender.title.setFontToFitHeight()
-//        sender.timerLabel.text = (TimeInterval(0)).toDisplayTime()
-//        //        timerLabel.setFontToFitHeight()
-//        sender.timerLabel.setKernSpacing()
-//        sender.timerLabel.setFontToFit()
-        
     }
     
-    override func viewDidLayoutSubviews() {
-//        // At this point, the frame of cell is still the init value, and it seems that autolayout has not taken effect yet. By Jing, 9/20/19
-//        if activityOverview.visibleCells.count > 0 {
-//            if let activityCell = activityOverview.visibleCells.first as? ActivityCell {
-//                print("1.activityCell.timerLabel.frame >> \(activityCell.timerLabel.frame)")
-//            }
-//        }
-    }
+    override func viewDidLayoutSubviews() {}
     
-    override func viewWillLayoutSubviews() {
-        if activityOverview.visibleCells.count > 0 {
-            if let activityCell = activityOverview.visibleCells.first as? ActivityCell {
-                print("2.activityCell.timerLabel.frame >> \(activityCell.timerLabel.frame)")
-            }
-        }
-    }
+    override func viewWillLayoutSubviews() {}
     
 }
 
@@ -163,8 +127,3 @@ extension ActivityOverviewVC {
     }
 }
 
-
-//// Utils for flow layout May cause some conflicts
-//extension UICollectionViewDelegateFlowLayout {
-//
-//}
