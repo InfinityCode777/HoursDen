@@ -3,16 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D25A181231330BC00DA1F5B /* FoundryGridnikBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */; };
+		2D25A182231330BC00DA1F5B /* FoundryGridnik-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */; };
+		2D25A183231330BC00DA1F5B /* FoundryGridnikMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */; };
+		2D25A186231459BE00DA1F5B /* ExtUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25A185231459BE00DA1F5B /* ExtUILabel.swift */; };
+		2D25A18923145DC900DA1F5B /* JLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25A18823145DC900DA1F5B /* JLog.swift */; };
 		2D2A19FE2312019F00D9D2E2 /* ActivityBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */; };
+		2DB77E9423284DDD00CC852D /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB77E9323284DDD00CC852D /* ExtUIView.swift */; };
 		2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF224230F394200A10830 /* ActivityButton.swift */; };
 		2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2372310765B00A10830 /* ColorPalette.PNG */; };
 		2DBEF23B2310765B00A10830 /* Note.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2382310765B00A10830 /* Note.JPG */; };
 		2DBEF2402310805500A10830 /* PubSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF23F2310805500A10830 /* PubSub.swift */; };
 		2DBEF2462311B3DD00A10830 /* ExtTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */; };
+		800B7F892325EA7B004643BB /* Anchorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800B7F882325EA7B004643BB /* Anchorage.framework */; };
 		800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD091230E27EE00A5CCA2 /* AppDelegate.swift */; };
 		800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */; };
 		800FD097230E27EE00A5CCA2 /* ActivityOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */; };
@@ -24,6 +31,7 @@
 		800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0C4230E2C3600A5CCA2 /* ActivityCell.swift */; };
 		800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 800FD0C5230E2C3600A5CCA2 /* ActivityCell.xib */; };
 		800FD0CA230E306600A5CCA2 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD0C9230E306600A5CCA2 /* ActivityModel.swift */; };
+		809904BD232896D6008F72E6 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809904BC232896D6008F72E6 /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikBold.otf; sourceTree = "<group>"; };
+		2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FoundryGridnik-Regular.otf"; sourceTree = "<group>"; };
+		2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikMedium.otf; sourceTree = "<group>"; };
+		2D25A185231459BE00DA1F5B /* ExtUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUILabel.swift; sourceTree = "<group>"; };
+		2D25A18823145DC900DA1F5B /* JLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLog.swift; sourceTree = "<group>"; };
 		2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBaseVC.swift; sourceTree = "<group>"; };
+		2DB77E9323284DDD00CC852D /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		2DBEF224230F394200A10830 /* ActivityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
 		2DBEF2372310765B00A10830 /* ColorPalette.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPalette.PNG; sourceTree = "<group>"; };
 		2DBEF2382310765B00A10830 /* Note.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Note.JPG; sourceTree = "<group>"; };
 		2DBEF23F2310805500A10830 /* PubSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSub.swift; sourceTree = "<group>"; };
 		2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTimeInterval.swift; sourceTree = "<group>"; };
+		800B7F882325EA7B004643BB /* Anchorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Anchorage.framework; path = Carthage/Build/iOS/Anchorage.framework; sourceTree = "<group>"; };
 		800FD08E230E27EE00A5CCA2 /* Hour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800FD091230E27EE00A5CCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOverviewVC.swift; sourceTree = "<group>"; };
@@ -67,6 +82,7 @@
 		800FD0C4230E2C3600A5CCA2 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		800FD0C5230E2C3600A5CCA2 /* ActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		800FD0C9230E306600A5CCA2 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		809904BC232896D6008F72E6 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800B7F892325EA7B004643BB /* Anchorage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,13 +111,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D25A17D231330B000DA1F5B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */,
+				2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */,
+				2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		2D25A1842314599600DA1F5B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */,
+				2D25A185231459BE00DA1F5B /* ExtUILabel.swift */,
+				2DB77E9323284DDD00CC852D /* ExtUIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2D2A19FF2312026000D9D2E2 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				2D25A1842314599600DA1F5B /* Extensions */,
 				800FD0C2230E2BD400A5CCA2 /* Cell */,
 				800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */,
 				800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */,
-				2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -109,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				2DBEF224230F394200A10830 /* ActivityButton.swift */,
+				809904BC232896D6008F72E6 /* CanvasView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -127,6 +165,7 @@
 			children = (
 				2DBEF23E23107FDF00A10830 /* PubSub */,
 				2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */,
+				2D25A18823145DC900DA1F5B /* JLog.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -139,6 +178,14 @@
 			path = PubSub;
 			sourceTree = "<group>";
 		};
+		800B7F872325EA7A004643BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				800B7F882325EA7B004643BB /* Anchorage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		800FD085230E27EE00A5CCA2 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +193,7 @@
 				800FD0A8230E27F100A5CCA2 /* HourTests */,
 				800FD0B3230E27F100A5CCA2 /* HourUITests */,
 				800FD08F230E27EE00A5CCA2 /* Products */,
+				800B7F872325EA7A004643BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +210,7 @@
 		800FD090230E27EE00A5CCA2 /* Hour */ = {
 			isa = PBXGroup;
 			children = (
+				2D25A17D231330B000DA1F5B /* Font */,
 				2D2A19FF2312026000D9D2E2 /* Activity */,
 				2DBEF23D23107FD200A10830 /* Utility */,
 				2DBEF2352310727000A10830 /* Resources */,
@@ -221,6 +270,7 @@
 				800FD08A230E27EE00A5CCA2 /* Sources */,
 				800FD08B230E27EE00A5CCA2 /* Frameworks */,
 				800FD08C230E27EE00A5CCA2 /* Resources */,
+				800B7F8A2325EA8A004643BB /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -317,10 +367,13 @@
 			files = (
 				800FD09F230E27F100A5CCA2 /* LaunchScreen.storyboard in Resources */,
 				800FD09C230E27F100A5CCA2 /* Assets.xcassets in Resources */,
+				2D25A183231330BC00DA1F5B /* FoundryGridnikMedium.otf in Resources */,
 				800FD0C7230E2C3600A5CCA2 /* ActivityCell.xib in Resources */,
 				2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */,
 				800FD097230E27EE00A5CCA2 /* ActivityOverview.storyboard in Resources */,
 				2DBEF23B2310765B00A10830 /* Note.JPG in Resources */,
+				2D25A181231330BC00DA1F5B /* FoundryGridnikBold.otf in Resources */,
+				2D25A182231330BC00DA1F5B /* FoundryGridnik-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +393,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		800B7F8A2325EA8A004643BB /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		800FD08A230E27EE00A5CCA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -347,13 +423,17 @@
 			files = (
 				800FD0CA230E306600A5CCA2 /* ActivityModel.swift in Sources */,
 				2D2A19FE2312019F00D9D2E2 /* ActivityBaseVC.swift in Sources */,
+				809904BD232896D6008F72E6 /* CanvasView.swift in Sources */,
 				800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */,
 				2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */,
+				2D25A186231459BE00DA1F5B /* ExtUILabel.swift in Sources */,
 				2DBEF2402310805500A10830 /* PubSub.swift in Sources */,
 				800FD09A230E27EE00A5CCA2 /* Hour.xcdatamodeld in Sources */,
 				2DBEF2462311B3DD00A10830 /* ExtTimeInterval.swift in Sources */,
 				800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */,
+				2D25A18923145DC900DA1F5B /* JLog.swift in Sources */,
 				800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */,
+				2DB77E9423284DDD00CC852D /* ExtUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -514,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -530,6 +610,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3GHL87D55;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Hour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,6 +632,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3GHL87D55;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Hour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
