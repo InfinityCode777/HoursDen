@@ -4,20 +4,179 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FoundryGridnikMedium.otf">
+            <string>FoundryGridnik-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ActivityCell" customModule="Hour" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Type1" id="gTV-IL-0wX" customClass="ActivityCell" customModule="Hour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="159" height="159"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="159" height="159"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKu-7J-9xa" customClass="CanvasView" customModule="Hour" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="159" height="159"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pla-wN-18O">
+                                <rect key="frame" x="0.0" y="58.5" width="159" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="36"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKw-aC-Him">
+                                <rect key="frame" x="13" y="10" width="133" height="20"/>
+                                <color key="backgroundColor" red="0.30375107019999997" green="0.85185806480000004" blue="0.18996147259999999" alpha="0.68530607880000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wKw-aC-Him" secondAttribute="height" multiplier="143/20" id="BOq-sk-uPL"/>
+                                    <constraint firstAttribute="width" secondItem="wKw-aC-Him" secondAttribute="height" multiplier="133:20" id="lNo-bm-dci"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BOq-sk-uPL"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llg-FS-Zul" userLabel="Resume Btn">
+                                <rect key="frame" x="-159" y="44.5" width="159" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="30"/>
+                                <state key="normal" title="Resume">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onResumeBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="FlV-Ts-Qh5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv1-nR-LqM" userLabel="Finish Btn">
+                                <rect key="frame" x="159" y="88.5" width="159" height="47"/>
+                                <color key="backgroundColor" red="0.81960784313725488" green="0.21176470588235294" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="30"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStopBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="AyU-8X-a9M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPP-s3-7Qt" userLabel="Pause Btn" customClass="ActivityButton" customModule="Hour" customModuleProvider="target">
+                                <rect key="frame" x="44.5" y="53.5" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NPP-s3-7Qt" secondAttribute="height" multiplier="1:1" id="B4L-E6-e7O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="60"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPauseBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="axn-RT-vkM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gp1-6i-uAY" customClass="ActivityButton" customModule="Hour" customModuleProvider="target">
+                                <rect key="frame" x="49.5" y="58.5" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.69225412610000003" green="0.20929917689999999" blue="0.17193427680000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gp1-6i-uAY" secondAttribute="height" multiplier="1:1" id="SJe-Ab-NHB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FoundryGridnik-Medium" family="FoundryGridnik" pointSize="60"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" backgroundImage="Start-no-BG">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.69225412610000003" green="0.20929917689999999" blue="0.17193427680000001" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onStartBtnTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="yiK-x5-0n3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="llg-FS-Zul" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" id="0Bf-ux-WDy"/>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="0Tb-hw-NJA"/>
+                            <constraint firstItem="NPP-s3-7Qt" firstAttribute="centerY" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="89/80" id="3gq-TT-PgX"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="height" secondItem="tKu-7J-9xa" secondAttribute="height" multiplier="60/159" id="3my-ue-Uk3"/>
+                            <constraint firstItem="llg-FS-Zul" firstAttribute="height" secondItem="tKu-7J-9xa" secondAttribute="height" multiplier="44/159" id="99O-LP-Zgr"/>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="centerY" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="40/159" id="AW5-Zw-VJN"/>
+                            <constraint firstItem="Pla-wN-18O" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="Cjb-Ec-QwU"/>
+                            <constraint firstItem="NPP-s3-7Qt" firstAttribute="height" secondItem="tKu-7J-9xa" secondAttribute="height" multiplier="70/159" id="ER7-Dx-yxb"/>
+                            <constraint firstItem="llg-FS-Zul" firstAttribute="bottom" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="89/80" id="EXX-E0-jbn"/>
+                            <constraint firstItem="llg-FS-Zul" firstAttribute="trailing" secondItem="tKu-7J-9xa" secondAttribute="leading" id="MI6-pB-liW"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="NOR-6S-5tF"/>
+                            <constraint firstItem="NPP-s3-7Qt" firstAttribute="width" secondItem="NPP-s3-7Qt" secondAttribute="height" multiplier="1:1" id="OMy-VK-E5F"/>
+                            <constraint firstItem="wKw-aC-Him" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" multiplier="133/159" id="WDE-jV-wmh"/>
+                            <constraint firstItem="yv1-nR-LqM" firstAttribute="top" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="89/80" id="YfO-aG-5QT"/>
+                            <constraint firstItem="yv1-nR-LqM" firstAttribute="height" secondItem="tKu-7J-9xa" secondAttribute="height" multiplier="47/159" id="adT-RZ-0Io"/>
+                            <constraint firstItem="yv1-nR-LqM" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" id="b0l-dt-qpI"/>
+                            <constraint firstItem="Pla-wN-18O" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" id="cbf-Sp-cjA"/>
+                            <constraint firstItem="yv1-nR-LqM" firstAttribute="leading" secondItem="tKu-7J-9xa" secondAttribute="trailing" id="dIV-UV-Jcp"/>
+                            <constraint firstItem="Pla-wN-18O" firstAttribute="centerY" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="89/80" id="fQq-eU-3Ni"/>
+                            <constraint firstItem="Pla-wN-18O" firstAttribute="height" secondItem="tKu-7J-9xa" secondAttribute="height" multiplier="60/159" id="irC-sU-5rw"/>
+                            <constraint firstItem="gp1-6i-uAY" firstAttribute="centerY" secondItem="tKu-7J-9xa" secondAttribute="centerY" multiplier="89/80" id="qB7-Oo-K72"/>
+                            <constraint firstItem="NPP-s3-7Qt" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="zRf-fP-DWE"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.69225412610000003" green="0.20929917689999999" blue="0.17193427680000001" alpha="1" colorSpace="deviceRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tKu-7J-9xa" secondAttribute="bottom" id="GoD-2O-9cy"/>
+                <constraint firstItem="tKu-7J-9xa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pk4-28-oIX"/>
+                <constraint firstAttribute="trailing" secondItem="tKu-7J-9xa" secondAttribute="trailing" id="SJ6-eN-CSQ"/>
+                <constraint firstItem="tKu-7J-9xa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="j1q-mQ-5Fw"/>
+            </constraints>
+            <connections>
+                <outlet property="canvasView" destination="tKu-7J-9xa" id="vPE-Im-pVp"/>
+                <outlet property="pauseBtn" destination="NPP-s3-7Qt" id="BR7-Ez-Txu"/>
+                <outlet property="resumeBtn" destination="llg-FS-Zul" id="V7Q-Ly-x94"/>
+                <outlet property="resumeBtnTrailingContraint" destination="MI6-pB-liW" id="rlW-1b-Q1P"/>
+                <outlet property="startBtn" destination="gp1-6i-uAY" id="QkL-92-LQl"/>
+                <outlet property="stopBtn" destination="yv1-nR-LqM" id="lNJ-m6-u0D"/>
+                <outlet property="stopBtnLeadingContraint" destination="dIV-UV-Jcp" id="CXy-Bb-zF6"/>
+                <outlet property="timerLabel" destination="Pla-wN-18O" id="Wek-C4-vHW"/>
+                <outlet property="title" destination="wKw-aC-Him" id="lH8-ee-tqe"/>
+            </connections>
+            <point key="canvasLocation" x="510.86956521739137" y="1.6741071428571428"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Start-no-BG" width="60" height="60"/>
+    </resources>
 </document>

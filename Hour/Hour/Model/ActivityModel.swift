@@ -13,11 +13,13 @@ public struct ActivityModel {
     var name: String
     var UID: UUID
     var desc: String?
+    var bgColor: UIColor
     
-    init(category: String, name: String, desc: String?, UID: UUID) {
+    init(category: String, name: String, desc: String?, UID: UUID, bgColor: UIColor = .darkGray) {
         self.category = category
         self.name = name
-        self.desc = name
+        self.desc = desc
         self.UID = UID
+        self.bgColor = bgColor
     }
 }
