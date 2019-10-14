@@ -118,6 +118,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="llg-FS-Zul" firstAttribute="width" secondItem="tKu-7J-9xa" secondAttribute="width" id="0Bf-ux-WDy"/>
                             <constraint firstItem="wKw-aC-Him" firstAttribute="centerX" secondItem="tKu-7J-9xa" secondAttribute="centerX" id="0Tb-hw-NJA"/>

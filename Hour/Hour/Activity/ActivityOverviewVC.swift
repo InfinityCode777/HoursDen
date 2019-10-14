@@ -99,6 +99,12 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let activityCell = collectionView.cellForItem(at: indexPath) as? ActivityCell else { return }
+        performSegue(withIdentifier: "activityDetail", sender: activityCell)
+    }
+    
 }
 
 
@@ -122,8 +128,17 @@ extension ActivityOverviewVC {
 
 // Utils for navigation
 extension ActivityOverviewVC {
-    func prepare(for segue: UIStoryboardSegue, sender: ActivityCell) {
-        
+//    func prepare(for segue: UIStoryboardSegue, sender: ActivityCell) {
+//        print("Ready to fly!")
+//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "activityDetail" {
+            if let activityCell = sender as? ActivityCell {
+            
+            print("Ready to fly!")
+            print("Activity >> \(activityCell.activity)")
+        }
+        }
     }
 }
 

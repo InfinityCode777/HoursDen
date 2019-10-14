@@ -55,6 +55,7 @@ class ActivityCell: UICollectionViewCell {
         return view
     }()
     
+//    private var canvasViewTappedGesture = UIGestureRecognizer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -91,6 +92,10 @@ class ActivityCell: UICollectionViewCell {
     @IBAction func onStopBtnTapped(_ sender: UIButton) {
         //        self.startButtonTappedHandler?(self)
         timerStatus = .stopped
+    }
+    
+    @objc func canvasViewTappedHandler(_ sender: Any) {
+        print("Canvas View tapped!")
     }
     
     
@@ -290,6 +295,9 @@ class ActivityCell: UICollectionViewCell {
     func initUI() {
         contentView.layer.cornerRadius = 5
         contentView.layer.masksToBounds = true
+//        canvasViewTappedGesture = UIGestureRecognizer(target: self, action: #selector(canvasViewTappedHandler(_:)))
+//        canvasView.addGestureRecognizer(canvasViewTappedGesture)
+        
         // Group all utility button together, so that we can use enableButton() to enable/disable these four buttons easily, a better way of doing may be needed if more 4 util button need to be handled.
         // The order of each button in the array should be [startBtn, pauseBtn, resumeBtn, stopBtn]
         utilBtnGroup.append(startBtn)
