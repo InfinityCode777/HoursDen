@@ -71,7 +71,16 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         activityOverview.reloadData()
-        
+        //        print("PubSub >> Back to overview >>")
+        //        PubSub.shared.ls()
+        print("PubSub >> Back to overview >> \(PubSub.shared.listners)")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //        print("PubSub >> Leave overview >>")
+        //        PubSub.shared.ls()
+        print("PubSub >> Leave overview >> \(PubSub.shared.listners)")
     }
     
 }
@@ -99,6 +108,13 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let activityCell = collectionView.cellForItem(at: indexPath) as? ActivityCell else { return }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        performSegue(withIdentifier: "activityDetail", sender: activityCell)
+    }
+    
 }
 
 
@@ -122,8 +138,17 @@ extension ActivityOverviewVC {
 
 // Utils for navigation
 extension ActivityOverviewVC {
-    func prepare(for segue: UIStoryboardSegue, sender: ActivityCell) {
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "activityDetail" {
+            if let activityCell = sender as? ActivityCell {
+                if let destVC = segue.destination as? ActivityDetailVC {
+                    destVC.activity = activityCell.activity
+                }
+//                print("Ready to fly!")
+//                print("Activity >> \(activityCell.activity)")
+            }
+        }
     }
 }
 

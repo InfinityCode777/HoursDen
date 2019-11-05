@@ -19,6 +19,7 @@
 		2DBEF23B2310765B00A10830 /* Note.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2382310765B00A10830 /* Note.JPG */; };
 		2DBEF2402310805500A10830 /* PubSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF23F2310805500A10830 /* PubSub.swift */; };
 		2DBEF2462311B3DD00A10830 /* ExtTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */; };
+		2DC709462355236B00255995 /* ActivityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC709452355236B00255995 /* ActivityDetailVC.swift */; };
 		800B7F892325EA7B004643BB /* Anchorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800B7F882325EA7B004643BB /* Anchorage.framework */; };
 		800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD091230E27EE00A5CCA2 /* AppDelegate.swift */; };
 		800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */; };
@@ -64,6 +65,7 @@
 		2DBEF2382310765B00A10830 /* Note.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Note.JPG; sourceTree = "<group>"; };
 		2DBEF23F2310805500A10830 /* PubSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubSub.swift; sourceTree = "<group>"; };
 		2DBEF2452311B3DD00A10830 /* ExtTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTimeInterval.swift; sourceTree = "<group>"; };
+		2DC709452355236B00255995 /* ActivityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailVC.swift; sourceTree = "<group>"; };
 		800B7F882325EA7B004643BB /* Anchorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Anchorage.framework; path = Carthage/Build/iOS/Anchorage.framework; sourceTree = "<group>"; };
 		800FD08E230E27EE00A5CCA2 /* Hour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800FD091230E27EE00A5CCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				2D25A1842314599600DA1F5B /* Extensions */,
 				800FD0C2230E2BD400A5CCA2 /* Cell */,
 				800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */,
+				2DC709452355236B00255995 /* ActivityDetailVC.swift */,
 				800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */,
 			);
 			path = Activity;
@@ -145,6 +148,7 @@
 		2DBEF222230F390200A10830 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */,
 				2DBEF224230F394200A10830 /* ActivityButton.swift */,
 				809904BC232896D6008F72E6 /* CanvasView.swift */,
 			);
@@ -164,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				2DBEF23E23107FDF00A10830 /* PubSub */,
-				2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */,
 				2D25A18823145DC900DA1F5B /* JLog.swift */,
 			);
 			path = Utility;
@@ -433,6 +436,7 @@
 				800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */,
 				2D25A18923145DC900DA1F5B /* JLog.swift in Sources */,
 				800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */,
+				2DC709462355236B00255995 /* ActivityDetailVC.swift in Sources */,
 				2DB77E9423284DDD00CC852D /* ExtUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,7 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -594,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

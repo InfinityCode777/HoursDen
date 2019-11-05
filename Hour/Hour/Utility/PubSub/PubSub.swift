@@ -84,7 +84,7 @@ public class PubSub {
             
             list.removeAll(where: { $0.isEqualTo(listner) })
             listners[event] = list
-            print("Removed for Event \(event) listner  \(listner) total listners \(list.count)")
+            print("PubSub >> Removed for Event \(event) listner  \(listner) total listners \(list.count)")
         }
     }
     
