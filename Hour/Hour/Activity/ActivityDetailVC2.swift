@@ -1,42 +1,35 @@
 //
-//  ActivityDetailVC.swift
+//  ActivityDetailVC2.swift
 //  Hour
 //
-//  Created by Jing Wang on 10/14/19.
+//  Created by Jing Wang on 11/11/19.
 //  Copyright © 2019 Jackalope. All rights reserved.
 //
 
 import UIKit
 
-class ActivityDetailVC: ActivityBaseVC {
+class ActivityDetailVC2: ActivityBaseVC {
     
-    @IBOutlet weak var activityTitleLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var detailScrollView: UIScrollView!
-    @IBOutlet weak var canvasView: UIView!
+    @IBOutlet weak var activityTitleLabel: UILabel!
     
     
-        //TOTO we need to fnd way to link model with view/cell
+    //TOTO we need to fnd way to link model with view/cell
     public var activity: ActivityModel?
     { didSet {
-//        setupUI()
+        //        setupUI()
         print("1")
         }}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        closeBtn.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65), for: .normal)
-        print("2")
-        
-
-
+                print("2")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
-        print("3")
     }
     
     @IBAction func closeBtnTapped(_ sender: Any) {
@@ -44,7 +37,7 @@ class ActivityDetailVC: ActivityBaseVC {
     }
     
     func setupUI() {
-        canvasView.backgroundColor = activity?.bgColor
+        scrollView.backgroundColor = activity?.bgColor
         activityTitleLabel.text = activity?.name
     }
     

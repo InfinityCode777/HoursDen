@@ -23,6 +23,8 @@ class ActivityOverviewVC: ActivityBaseVC {
     var activityCellWidth: CGFloat = 0
     var itemSpacing: CGFloat = ((19/375)*UIScreen.main.bounds.width).rounded()
     
+    var transitionAnimator = PopAnimator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,8 +113,8 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let activityCell = collectionView.cellForItem(at: indexPath) as? ActivityCell else { return }
-        collectionView.deselectItem(at: indexPath, animated: true)
         performSegue(withIdentifier: "activityDetail", sender: activityCell)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
 }
@@ -142,7 +144,8 @@ extension ActivityOverviewVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "activityDetail" {
             if let activityCell = sender as? ActivityCell {
-                if let destVC = segue.destination as? ActivityDetailVC {
+                if let destVC = segue.destination as? ActivityDetailVC2 {
+                    destVC.transitioningDelegate = self
                     destVC.activity = activityCell.activity
                 }
 //                print("Ready to fly!")
@@ -152,3 +155,38 @@ extension ActivityOverviewVC {
     }
 }
 
+// Animating view controller transition
+extension ActivityOverviewVC: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        // Config animator i.e. transition
+        guard
+            let selectedItemIndexPath = activityOverview.indexPathsForSelectedItems?.first,
+            let selectedItem = activityOverview.cellForItem(at: selectedItemIndexPath) as? ActivityCell,
+          let selectedItemSuperview = selectedItem.superview
+          else {
+            return nil
+        }
+        
+        let originalFrame = selectedItemSuperview.convert(selectedItem.frame, to: nil)
+        transitionAnimator.originalFrame = CGRect(
+          x: originalFrame.origin.x,// + itemSpacing,
+          y: originalFrame.origin.y,// + itemSpacing,
+          width: originalFrame.width,// - itemSpacing*2,
+          height: originalFrame.height// - itemSpacing*2
+        )
+
+        
+        
+        transitionAnimator.isShowingDetail = true
+        
+        return transitionAnimator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transitionAnimator.isShowingDetail = false
+        
+        return transitionAnimator
+    }
+}

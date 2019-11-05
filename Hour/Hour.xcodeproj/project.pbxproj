@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D18751223722D3800909C45 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D18751123722D3800909C45 /* PopAnimator.swift */; };
 		2D25A181231330BC00DA1F5B /* FoundryGridnikBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */; };
 		2D25A182231330BC00DA1F5B /* FoundryGridnik-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */; };
 		2D25A183231330BC00DA1F5B /* FoundryGridnikMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */; };
 		2D25A186231459BE00DA1F5B /* ExtUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25A185231459BE00DA1F5B /* ExtUILabel.swift */; };
 		2D25A18923145DC900DA1F5B /* JLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25A18823145DC900DA1F5B /* JLog.swift */; };
 		2D2A19FE2312019F00D9D2E2 /* ActivityBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */; };
+		2D754D9F237A55BA00BE4372 /* ActivityDetailVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D754D9E237A55BA00BE4372 /* ActivityDetailVC2.swift */; };
 		2DB77E9423284DDD00CC852D /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB77E9323284DDD00CC852D /* ExtUIView.swift */; };
 		2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEF224230F394200A10830 /* ActivityButton.swift */; };
 		2DBEF23A2310765B00A10830 /* ColorPalette.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEF2372310765B00A10830 /* ColorPalette.PNG */; };
@@ -53,12 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D18751123722D3800909C45 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		2D25A17E231330BC00DA1F5B /* FoundryGridnikBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikBold.otf; sourceTree = "<group>"; };
 		2D25A17F231330BC00DA1F5B /* FoundryGridnik-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FoundryGridnik-Regular.otf"; sourceTree = "<group>"; };
 		2D25A180231330BC00DA1F5B /* FoundryGridnikMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoundryGridnikMedium.otf; sourceTree = "<group>"; };
 		2D25A185231459BE00DA1F5B /* ExtUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUILabel.swift; sourceTree = "<group>"; };
 		2D25A18823145DC900DA1F5B /* JLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLog.swift; sourceTree = "<group>"; };
 		2D2A19FD2312019F00D9D2E2 /* ActivityBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBaseVC.swift; sourceTree = "<group>"; };
+		2D754D9E237A55BA00BE4372 /* ActivityDetailVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailVC2.swift; sourceTree = "<group>"; };
 		2DB77E9323284DDD00CC852D /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		2DBEF224230F394200A10830 /* ActivityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
 		2DBEF2372310765B00A10830 /* ColorPalette.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPalette.PNG; sourceTree = "<group>"; };
@@ -113,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D18750F23722D1E00909C45 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				2D18751123722D3800909C45 /* PopAnimator.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		2D25A17D231330B000DA1F5B /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,10 +148,12 @@
 		2D2A19FF2312026000D9D2E2 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				2D18750F23722D1E00909C45 /* Animation */,
 				2D25A1842314599600DA1F5B /* Extensions */,
 				800FD0C2230E2BD400A5CCA2 /* Cell */,
 				800FD093230E27EE00A5CCA2 /* ActivityOverviewVC.swift */,
 				2DC709452355236B00255995 /* ActivityDetailVC.swift */,
+				2D754D9E237A55BA00BE4372 /* ActivityDetailVC2.swift */,
 				800FD095230E27EE00A5CCA2 /* ActivityOverview.storyboard */,
 			);
 			path = Activity;
@@ -428,6 +442,7 @@
 				2D2A19FE2312019F00D9D2E2 /* ActivityBaseVC.swift in Sources */,
 				809904BD232896D6008F72E6 /* CanvasView.swift in Sources */,
 				800FD094230E27EE00A5CCA2 /* ActivityOverviewVC.swift in Sources */,
+				2D18751223722D3800909C45 /* PopAnimator.swift in Sources */,
 				2DBEF225230F394200A10830 /* ActivityButton.swift in Sources */,
 				2D25A186231459BE00DA1F5B /* ExtUILabel.swift in Sources */,
 				2DBEF2402310805500A10830 /* PubSub.swift in Sources */,
@@ -436,6 +451,7 @@
 				800FD0C6230E2C3600A5CCA2 /* ActivityCell.swift in Sources */,
 				2D25A18923145DC900DA1F5B /* JLog.swift in Sources */,
 				800FD092230E27EE00A5CCA2 /* AppDelegate.swift in Sources */,
+				2D754D9F237A55BA00BE4372 /* ActivityDetailVC2.swift in Sources */,
 				2DC709462355236B00255995 /* ActivityDetailVC.swift in Sources */,
 				2DB77E9423284DDD00CC852D /* ExtUIView.swift in Sources */,
 			);
@@ -543,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -598,7 +614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
