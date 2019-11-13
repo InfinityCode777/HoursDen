@@ -28,8 +28,6 @@ class ActivityOverviewVC: ActivityBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        itemSpacing = itemSpacing.rounded()
-        
         activityCellWidth = (UIScreen.main.bounds.width - 3*itemSpacing)/2.0
         //        var activityCellWidth = (activityOverview.bounds.width - 70)/2.0
         activityCellWidth = activityCellWidth.rounded(.down)
@@ -37,6 +35,7 @@ class ActivityOverviewVC: ActivityBaseVC {
         flowLayout = activityOverview.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.itemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
         //        flowLayout?.estimatedItemSize = CGSize(width: activityCellWidth, height: activityCellWidth)
+        
         flowLayout?.minimumLineSpacing = itemSpacing
         flowLayout?.minimumInteritemSpacing = itemSpacing
         flowLayout?.sectionInset = UIEdgeInsets(top: 0,
@@ -59,7 +58,6 @@ class ActivityOverviewVC: ActivityBaseVC {
             ActivityModel(category: "Work", name: "discuss", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "shop", desc: nil, UID: UUID()),
             ActivityModel(category: "Work", name: "learn", desc: nil, UID: UUID())
-            
         ]
         
         for idx in 0..<activityList.count {
@@ -73,16 +71,16 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         activityOverview.reloadData()
-        //        print("PubSub >> Back to overview >>")
+        //        JLog.debug("PubSub >> Back to overview >>")
         //        PubSub.shared.ls()
-        print("PubSub >> Back to overview >> \(PubSub.shared.listners)")
+        //        JLog.debug("PubSub >> Back to overview >> \(PubSub.shared.listners)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //        print("PubSub >> Leave overview >>")
+        //        JLog.debug("PubSub >> Leave overview >>")
         //        PubSub.shared.ls()
-        print("PubSub >> Leave overview >> \(PubSub.shared.listners)")
+        //        JLog.debug("PubSub >> Leave overview >> \(PubSub.shared.listners)")
     }
     
 }
@@ -113,10 +111,27 @@ extension ActivityOverviewVC: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let activityCell = collectionView.cellForItem(at: indexPath) as? ActivityCell else { return }
+        
+        // 1.Using segue
         performSegue(withIdentifier: "activityDetail", sender: activityCell)
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    
+        
+        //        // 2.Directly present,
+        //        // This does not 100% work, the presented VC does not cover the screen 100%
+        //        let storyboard = UIStoryboard(name: "ActivityOverview", bundle: .main)
+        //
+        //        guard
+        //            let activityDetailVC = storyboard.instantiateViewController(withIdentifier: "activityDetail") as? ActivityDetailVC2
+        //            else {
+        //            print("Fail to init VC from storyboard")
+        //            return
+        //        }
+        //        modalPresentationStyle = .overFullScreen
+        //        print("Style >> \(modalPresentationStyle.rawValue)")
+        //        activityDetailVC.activity = activityCell.activity
+        //        activityDetailVC.transitioningDelegate = self
+        //        present(activityDetailVC, animated: true)
+    }    
 }
 
 
@@ -132,10 +147,6 @@ extension ActivityOverviewVC {
         }
     }
     
-    override func viewDidLayoutSubviews() {}
-    
-    override func viewWillLayoutSubviews() {}
-    
 }
 
 // Utils for navigation
@@ -148,8 +159,6 @@ extension ActivityOverviewVC {
                     destVC.transitioningDelegate = self
                     destVC.activity = activityCell.activity
                 }
-//                print("Ready to fly!")
-//                print("Activity >> \(activityCell.activity)")
             }
         }
     }
@@ -157,36 +166,37 @@ extension ActivityOverviewVC {
 
 // Animating view controller transition
 extension ActivityOverviewVC: UIViewControllerTransitioningDelegate {
+    
+    // This will be called when the presented delegator VC is presented
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        // Config animator i.e. transition
         guard
             let selectedItemIndexPath = activityOverview.indexPathsForSelectedItems?.first,
             let selectedItem = activityOverview.cellForItem(at: selectedItemIndexPath) as? ActivityCell,
-          let selectedItemSuperview = selectedItem.superview
-          else {
-            return nil
+            let selectedItemSuperview = selectedItem.superview
+            else {
+                return nil
         }
         
         let originalFrame = selectedItemSuperview.convert(selectedItem.frame, to: nil)
         transitionAnimator.originalFrame = CGRect(
-          x: originalFrame.origin.x,// + itemSpacing,
-          y: originalFrame.origin.y,// + itemSpacing,
-          width: originalFrame.width,// - itemSpacing*2,
-          height: originalFrame.height// - itemSpacing*2
+            x: originalFrame.origin.x, // + itemSpacing,
+            y: originalFrame.origin.y, // + itemSpacing,
+            width: originalFrame.width, // - itemSpacing*2,
+            height: originalFrame.height // - itemSpacing*2
         )
-
-        
         
         transitionAnimator.isShowingDetail = true
         
         return transitionAnimator
     }
     
+    // This will be called when the presented delegator VC is dismissed
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
         transitionAnimator.isShowingDetail = false
         
         return transitionAnimator
     }
+    
 }
+
+

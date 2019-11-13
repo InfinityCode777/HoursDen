@@ -17,20 +17,12 @@ class ActivityDetailVC: ActivityBaseVC {
     @IBOutlet weak var canvasView: UIView!
     
     
-        //TOTO we need to fnd way to link model with view/cell
     public var activity: ActivityModel?
-    { didSet {
-//        setupUI()
-        print("1")
-        }}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         closeBtn.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.65), for: .normal)
         print("2")
-        
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

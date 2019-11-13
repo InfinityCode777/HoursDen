@@ -17,14 +17,9 @@ class ActivityDetailVC2: ActivityBaseVC {
     
     //TOTO we need to fnd way to link model with view/cell
     public var activity: ActivityModel?
-    { didSet {
-        //        setupUI()
-        print("1")
-        }}
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-                print("2")
     }
     
     override func viewWillAppear(_ animated: Bool) {

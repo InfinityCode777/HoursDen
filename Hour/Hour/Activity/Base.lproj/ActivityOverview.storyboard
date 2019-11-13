@@ -22,9 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Yn-GU-8A8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Yn-GU-8A8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Fsg-mv-UGg">
                                     <size key="itemSize" width="201" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -82,6 +82,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2Yn-GU-8A8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5YP-CC-Jfu"/>
                             <constraint firstItem="2Yn-GU-8A8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8Rp-R8-Gen"/>
@@ -93,7 +94,7 @@
                     <navigationItem key="navigationItem" id="pnI-IJ-OvQ"/>
                     <connections>
                         <outlet property="activityOverview" destination="2Yn-GU-8A8" id="nFV-1m-Tgn"/>
-                        <segue destination="7O0-Zw-OBS" kind="presentation" identifier="activityDetail" modalPresentationStyle="fullScreen" id="VFV-OZ-AJm"/>
+                        <segue destination="7O0-Zw-OBS" kind="presentation" identifier="activityDetail" modalPresentationStyle="overFullScreen" id="VFV-OZ-AJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,7 +232,7 @@
         <!--Activity DetailVC2-->
         <scene sceneID="KJo-SF-yLN">
             <objects>
-                <viewController id="7O0-Zw-OBS" customClass="ActivityDetailVC2" customModule="Hour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="activityDetail" id="7O0-Zw-OBS" customClass="ActivityDetailVC2" customModule="Hour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jnc-Gk-pFh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,7 +323,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="P4U-m5-ENF"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Tv2-NV-yPn" firstAttribute="top" secondItem="1EL-5N-Rrk" secondAttribute="top" id="DF8-5O-yxb"/>
                             <constraint firstItem="Tv2-NV-yPn" firstAttribute="leading" secondItem="1EL-5N-Rrk" secondAttribute="leading" id="GmU-MA-oeL"/>
