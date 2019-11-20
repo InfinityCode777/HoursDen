@@ -14,7 +14,6 @@ public struct ActivityModel {
     var UID: UUID
     var desc: String?
     var bgColor: UIColor
-    var emojiTitle: String = ""
     
     init(category: String, name: String, desc: String?, UID: UUID, bgColor: UIColor = .darkGray) {
         self.category = category
