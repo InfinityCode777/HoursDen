@@ -20,6 +20,6 @@ extension TimeInterval {
         let timeString = hour > 0 ? String(format: "%02i:%02i", hour, minute) : String(format: "%02i:%02i", minute, second)
         return timeString
         
-//        return String(format: "%02i:%02i:%02i", hour, minute, second)
+        //        return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
 }
