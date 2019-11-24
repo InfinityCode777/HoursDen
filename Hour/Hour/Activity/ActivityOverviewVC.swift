@@ -16,7 +16,6 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     
     var activityList = [ActivityModel]()
-    var colorTable:[UIColor] = [#colorLiteral(red: 0.6862745098, green: 0.0431372549, blue: 0.2196078431, alpha: 1), #colorLiteral(red: 0.7529411765, green: 0.06666666667, blue: 0, alpha: 1), #colorLiteral(red: 0.8117647059, green: 0.2980392157, blue: 0, alpha: 1), #colorLiteral(red: 0.8431372549, green: 0.5254901961, blue: 0, alpha: 1), #colorLiteral(red: 0.5019607843, green: 0.01568627451, blue: 0.6235294118, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1803921569, blue: 0.7450980392, alpha: 1), #colorLiteral(red: 0.1529411765, green: 0.5764705882, blue: 0.003921568627, alpha: 1)]
     var activityTimer: Timer?
     var flowLayout: UICollectionViewFlowLayout?
     var testCounter: Int = 0
@@ -47,22 +46,7 @@ class ActivityOverviewVC: ActivityBaseVC {
         activityOverview.register(activityCellNib, forCellWithReuseIdentifier: "Type1")
         
         
-        activityList = [
-            ActivityModel(category: "Work", name: "dev", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "meeting", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "office chore", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "data collection", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "tech support", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "commute", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "lunch", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "discuss", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "shop", desc: nil, UID: UUID()),
-            ActivityModel(category: "Work", name: "learn", desc: nil, UID: UUID())
-        ]
-        
-        for idx in 0..<activityList.count {
-            activityList[idx].bgColor = colorTable[idx % 7]
-        }
+        activityList = ActivityModel.makeMockData()
         
         activityOverview.delegate = self
         activityOverview.dataSource = self
