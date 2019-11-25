@@ -24,6 +24,14 @@ class ActivityOverviewVC: ActivityBaseVC {
     
     var transitionAnimator = PopAnimator()
     
+    var isUIDebug: Bool = false
+    
+    // Make the Status Bar Light/Dark Content for this View
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+        //return UIStatusBarStyle.default   // Make dark again
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +66,10 @@ class ActivityOverviewVC: ActivityBaseVC {
         //        JLog.debug("PubSub >> Back to overview >>")
         //        PubSub.shared.ls()
         //        JLog.debug("PubSub >> Back to overview >> \(PubSub.shared.listners)")
+        if !isUIDebug {
+            activityOverview.backgroundColor = .black
+            view.backgroundColor = .black
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

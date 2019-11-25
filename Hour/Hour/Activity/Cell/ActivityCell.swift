@@ -255,7 +255,19 @@ class ActivityCell: UICollectionViewCell {
     
     
     func loadData() {
-        self.title.text = activity?.name
+        
+        var titleText = ""
+        
+        if let emoji = activity?.emoji {
+            titleText += emoji
+            startBtn.setTitle(emoji, for: .normal)
+            // By Jing, 2019/11/24, Still you should not do this here
+            //                        startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
+            startBtn.setBackgroundImage(nil, for: .normal)
+        }
+        if let name = activity?.name { titleText += " \(name)" }
+        
+        self.title.text = titleText
         
         // TODO: since autolayout is not completed yet, so everything here will be based on 159x159 cell, Jing, 9/12/19
         //        title.setFontToFitHeight()
@@ -264,9 +276,17 @@ class ActivityCell: UICollectionViewCell {
         //        timerLabel.setKernSpacing()
         //        timerLabel.setFontToFit()
         
+        if let _ = activity?.emoji {
+            startBtn.backgroundColor = .clear
+                        startBtn.borderColor = .clear
+//            startBtn.borderColor = activity?.bgColor ?? .lightGray // DEBUG
+        } else {
+            startBtn.backgroundColor = activity?.bgColor ?? .darkGray
+            startBtn.borderColor = activity?.bgColor ?? .lightGray
+        }
         
-        startBtn.backgroundColor = activity?.bgColor ?? .darkGray
-        startBtn.borderColor = activity?.bgColor ?? .lightGray
+        //        startBtn.backgroundColor = activity?.bgColor ?? .darkGray
+        //        startBtn.borderColor = activity?.bgColor ?? .lightGray
         canvasView.borderColor = activity?.bgColor ?? .lightGray
         title.textColor = activity?.bgColor ?? .white
         resumeBtn.setTitleColor(activity?.bgColor, for: .normal)
@@ -280,9 +300,12 @@ class ActivityCell: UICollectionViewCell {
         //        contentView.layer.cornerRadius = 5
         //        contentView.layer.masksToBounds = true
         
-        // TODO: This works but it is so stupid and so inefficient, the app need to update the font millions of times as long as the timer kicks
-        title.setFontToFit(scaleFactor: 1)
-        timerLabel.setFontToFit(scaleFactor: 0.95)
+        
+        //        // TODO: This works but it is so stupid and so inefficient, the app need to update the font millions of times as long as the timer kicks
+        //        title.setFontToFit(scaleFactor: 0.9)
+        //        timerLabel.setFontToFit(scaleFactor: 0.95)
+        
+        //        startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
         
         
         // TODO: Alternative, what is the diff between masksToBounds and clipsToBounds
@@ -294,8 +317,8 @@ class ActivityCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 5
         contentView.layer.masksToBounds = true
         // TODO, by Jing, 11/02/19, UIGestureRecognizer does not work with the following setup.
-//        canvasViewTappedGesture = UIGestureRecognizer(target: self, action: #selector(canvasViewTappedHandler(_:)))
-//        canvasView.addGestureRecognizer(canvasViewTappedGesture)
+        //        canvasViewTappedGesture = UIGestureRecognizer(target: self, action: #selector(canvasViewTappedHandler(_:)))
+        //        canvasView.addGestureRecognizer(canvasViewTappedGesture)
         
         // Group all utility button together, so that we can use enableButton() to enable/disable these four buttons easily, a better way of doing may be needed if more 4 util button need to be handled.
         // The order of each button in the array should be [startBtn, pauseBtn, resumeBtn, stopBtn]
@@ -303,6 +326,8 @@ class ActivityCell: UICollectionViewCell {
         utilBtnGroup.append(pauseBtn)
         utilBtnGroup.append(resumeBtn)
         utilBtnGroup.append(stopBtn)
+        
+        //        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         
     }
     
@@ -325,6 +350,12 @@ class ActivityCell: UICollectionViewCell {
         ////        Frame >> (218.0, 588.0, 175.0, 175.0)
         ////        Frame >> (21.0, 784.0, 175.0, 175.0)
         ////        Frame >> (218.0, 784.0, 175.0, 175.0)
+        
+        title.setFontToFit(scaleFactor: 1.0)
+        timerLabel.setFontToFit(scaleFactor: 0.95)
+        
+        
+        startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
     }
     
     
@@ -335,7 +366,7 @@ extension ActivityCell: Listner {
     func onEvent(_ event: Event, userInfo: Any) {
         elapsedTime += 1
         // Delegate the following line as computed part of elapsedTime, hope this will make is safer for race condition
-//        timerLabel.text = elapsedTime.toDisplayTime()
+        //        timerLabel.text = elapsedTime.toDisplayTime()
     }
 }
 
