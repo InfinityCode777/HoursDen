@@ -16,8 +16,6 @@ enum TimerStatus {
     case paused
 }
 
-
-
 class ActivityCell: UICollectionViewCell {
     
     @IBOutlet weak var title: UILabel!
@@ -42,7 +40,6 @@ class ActivityCell: UICollectionViewCell {
     
     private var UIDebug: Bool = false
     
-    //TOTO we need to fnd way to link model with view/cell
     public var activity: ActivityModel? { didSet {
         loadData()
         }}
@@ -50,7 +47,6 @@ class ActivityCell: UICollectionViewCell {
     private lazy var backdropView: UIView = {
         let view = UIView(frame: canvasView.frame)
         view.frame.size = CGSize(width: 10, height: 10)
-        //        view.layer.cornerRadius = 5
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         return view
     }()
@@ -67,9 +63,11 @@ class ActivityCell: UICollectionViewCell {
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        // TODO: ?? Do I need to do anything here?
+        // By Jing, 2019/11/26
+        // No need to put anything here yet
     }
     
+    // Action handler if you want to bubble this up to something else e.g. host VC
     public var startButtonTappedHandler: ((_ sender: ActivityCell) -> ())?
     
     @IBAction func onStartBtnTapped(_ sender: ActivityButton) {
@@ -78,7 +76,6 @@ class ActivityCell: UICollectionViewCell {
     }
     
     @IBAction func onPauseBtnTapped(_ sender: ActivityButton) {
-        //        self.startButtonTappedHandler?(self)
         timerStatus = .paused
     }
     
@@ -88,12 +85,11 @@ class ActivityCell: UICollectionViewCell {
     }
     
     @IBAction func onStopBtnTapped(_ sender: UIButton) {
-        //        self.startButtonTappedHandler?(self)
         timerStatus = .stopped
     }
     
     @objc func canvasViewTappedHandler(_ sender: Any) {
-        print("Canvas View tapped!")
+        JLog.info("Canvas View tapped!")
     }
     
     
@@ -133,7 +129,9 @@ class ActivityCell: UICollectionViewCell {
                             self.layoutIfNeeded()
                             
             }, completion: { _ in
-                // TODO: Is that necessary to use [weak self] in this scenario? Since I want to use enableButton() function to do this job
+                
+                // TODO: By Jing, 2019/10/10
+                // Is that necessary to use [weak self] in this scenario? Since I want to use enableButton() function to do this job
                 // Not really, checkout this post
                 // https://stackoverflow.com/questions/27019676/is-it-necessary-to-use-unowned-self-in-closures-of-uiview-animatewithduration
                 // Enable pauseBtn after timer starts
@@ -192,7 +190,6 @@ class ActivityCell: UICollectionViewCell {
                 // Update the timerLabel.text with "00:00", when you hit "Start" next time you will see timerLabel with smaller font sittng there for about one second, since timer event triggers label update.
                 self.timerLabel.text = "00:00"
                 self.timerLabel.transform = .identity
-                //                self.title.textColor = self.activity?.bgColor ?? .lightGray
                 // pauseBtn w/ transparent bgColor disappears
                 self.pauseBtn.alpha = 0
             })
@@ -261,8 +258,8 @@ class ActivityCell: UICollectionViewCell {
         if let emoji = activity?.emoji {
             titleText += emoji
             startBtn.setTitle(emoji, for: .normal)
-            // By Jing, 2019/11/24, Still you should not do this here
-            //                        startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
+            // By Jing, 2019/11/24, I still think that the follwoing line shouldn't be called here
+            // startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
             startBtn.setBackgroundImage(nil, for: .normal)
         }
         if let name = activity?.name { titleText += " \(name)" }
@@ -278,8 +275,8 @@ class ActivityCell: UICollectionViewCell {
         
         if let _ = activity?.emoji {
             startBtn.backgroundColor = .clear
-                        startBtn.borderColor = .clear
-//            startBtn.borderColor = activity?.bgColor ?? .lightGray // DEBUG
+            startBtn.borderColor = .clear
+            //            startBtn.borderColor = activity?.bgColor ?? .lightGray
         } else {
             startBtn.backgroundColor = activity?.bgColor ?? .darkGray
             startBtn.borderColor = activity?.bgColor ?? .lightGray
@@ -316,9 +313,13 @@ class ActivityCell: UICollectionViewCell {
     func initUI() {
         contentView.layer.cornerRadius = 5
         contentView.layer.masksToBounds = true
-        // TODO, by Jing, 11/02/19, UIGestureRecognizer does not work with the following setup.
-        //        canvasViewTappedGesture = UIGestureRecognizer(target: self, action: #selector(canvasViewTappedHandler(_:)))
-        //        canvasView.addGestureRecognizer(canvasViewTappedGesture)
+        // TODO, by Jing, 11/26/19,
+        // didSelectItemAt(), so this behavior comes for free,
+        // If there is no specific need, I will drop this issue in 30 days, by 2019/12/25/
+        //
+        // UIGestureRecognizer does not work with the following setup.
+        // canvasViewTappedGesture = UIGestureRecognizer(target: self, action: #selector(canvasViewTappedHandler(_:)))
+        // canvasView.addGestureRecognizer(canvasViewTappedGesture)
         
         // Group all utility button together, so that we can use enableButton() to enable/disable these four buttons easily, a better way of doing may be needed if more 4 util button need to be handled.
         // The order of each button in the array should be [startBtn, pauseBtn, resumeBtn, stopBtn]
@@ -326,9 +327,6 @@ class ActivityCell: UICollectionViewCell {
         utilBtnGroup.append(pauseBtn)
         utilBtnGroup.append(resumeBtn)
         utilBtnGroup.append(stopBtn)
-        
-        //        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        
     }
     
     override func didMoveToSuperview() {
@@ -354,8 +352,14 @@ class ActivityCell: UICollectionViewCell {
         title.setFontToFit(scaleFactor: 1.0)
         timerLabel.setFontToFit(scaleFactor: 0.95)
         
-        
+        //        startBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         startBtn.titleLabel?.setFontToFit(scaleFactor: 0.8)
+        
+        // TODO: By Jing 2029/11/26
+        // Nasty bug, for iOS 12.4, label's frame.size is always zero
+        print("Debug >> \(startBtn.titleLabel?.frame)")
+        print("Debug >> \(self.canvasView.frame)")
+        
     }
     
     

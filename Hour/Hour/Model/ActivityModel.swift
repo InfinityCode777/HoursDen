@@ -11,6 +11,12 @@
 
 import UIKit
 
+// By Jing, 2019/11/26 We might have more than two count modes, so create an enum rather than Bool
+public enum CountMode: Int {
+    case up
+    case down
+}
+
 public struct ActivityModel {
     // E.g. work, personal, work-out, etc.
     var category: String
@@ -24,8 +30,9 @@ public struct ActivityModel {
     var endTime: Date
     var elapsedTime: TimeInterval
     var desc: String?
+    var countMode: CountMode
     
-    public init(category: String = "unknown", name: String = "activity", UID: UUID = UUID(), bgColor: UIColor = .green, emoji: String? = "😊", startTime: Date = Date(), endTime: Date = Date(), elapsedTime: TimeInterval = 0, desc: String? = nil) {
+    public init(category: String = "unknown", name: String = "activity", UID: UUID = UUID(), bgColor: UIColor = .green, emoji: String? = "😊", startTime: Date = Date(), endTime: Date = Date(), elapsedTime: TimeInterval = 0, desc: String? = nil, countMode: CountMode = .up) {
         self.category = category
         self.name = name
         self.UID = UID
@@ -35,29 +42,31 @@ public struct ActivityModel {
         self.endTime = endTime
         self.elapsedTime = elapsedTime
         self.desc = desc
+        self.countMode = countMode
     }
-
-    // TODO: What is the best practice to 
-    //    init(_ name: String){
-    //        self.init(category: "unknown", name: name, UID: UUID(), bgColor: .green, emoji: "🐯", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: nil)
-    //    }
+    
+    // TODO: By Jing 2019/11/26
+    // What is the best practice for init() if you need to popluate a list of activity
+    // 1.A convenience init()
+    // 2.A designated init() with default value
+    
     public static func makeMockData() -> [ActivityModel] {
         
         var activityList = [ActivityModel]()
         
         activityList = [
             ActivityModel(category: "Work", name: "dev", bgColor: pickRandomColor(), emoji: "🐭", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on coding, testing and deployment"),
-        ActivityModel(category: "Work", name: "meeting", bgColor: pickRandomColor(), emoji: "🐂", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of meetings, planning and discusstion"),
-        ActivityModel(category: "Work", name: "office chore", bgColor: pickRandomColor(), emoji: "🐯", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent misc office duty, e.g. order something, moving office and assemble furniture"),
-        ActivityModel(category: "Work", name: "Data  collection", bgColor: pickRandomColor(), emoji: "🐰", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all data collection session either for dev purpose or requested by other groups"),
-        ActivityModel(category: "Work", name: "Tech support", bgColor: pickRandomColor(), emoji: "🐲", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "The time spent on setting up demo for tools & software both internally and externally"),
-        ActivityModel(category: "Work", name: "Commute", bgColor: pickRandomColor(), emoji: "🐍", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of transportation to company or to the clients"),
-        ActivityModel(category: "Work", name: "Lunch", bgColor: pickRandomColor(), emoji: "🐎", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on your lunch break"),
-        ActivityModel(category: "Work", name: "Maintain", bgColor: pickRandomColor(), emoji: "🐑", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of maintenance, e.g. repairing computers, setting up new development environment"),
-        ActivityModel(category: "Work", name: "Learning", bgColor: pickRandomColor(), emoji: "🐒", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on tutorials"),
-        ActivityModel(category: "Work", name: "Relax", bgColor: pickRandomColor(), emoji: "🐓", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on relax and stretch"),
-        ActivityModel(category: "Work", name: "Health", bgColor: pickRandomColor(), emoji: "🐶", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of health issues, primarily doctor's appointment"),
-        ActivityModel(category: "Work", name: "Idle", bgColor: pickRandomColor(), emoji: "🐷", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "That's it, the idle time, should be the less the better"),
+            ActivityModel(category: "Work", name: "meeting", bgColor: pickRandomColor(), emoji: "🐂", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of meetings, planning and discusstion"),
+            ActivityModel(category: "Work", name: "office chore", bgColor: pickRandomColor(), emoji: "🐯", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent misc office duty, e.g. order something, moving office and assemble furniture"),
+            ActivityModel(category: "Work", name: "Data  collection", bgColor: pickRandomColor(), emoji: "🐰", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all data collection session either for dev purpose or requested by other groups"),
+            ActivityModel(category: "Work", name: "Tech support", bgColor: pickRandomColor(), emoji: "🐲", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "The time spent on setting up demo for tools & software both internally and externally"),
+            ActivityModel(category: "Work", name: "Commute", bgColor: pickRandomColor(), emoji: "🐍", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of transportation to company or to the clients"),
+            ActivityModel(category: "Work", name: "Lunch", bgColor: pickRandomColor(), emoji: "🐎", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on your lunch break"),
+            ActivityModel(category: "Work", name: "Maintain", bgColor: pickRandomColor(), emoji: "🐑", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of maintenance, e.g. repairing computers, setting up new development environment"),
+            ActivityModel(category: "Work", name: "Learning", bgColor: pickRandomColor(), emoji: "🐒", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on tutorials"),
+            ActivityModel(category: "Work", name: "Relax", bgColor: pickRandomColor(), emoji: "🐓", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on relax and stretch"),
+            ActivityModel(category: "Work", name: "Health", bgColor: pickRandomColor(), emoji: "🐶", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "Time spent on all kinds of health issues, primarily doctor's appointment"),
+            ActivityModel(category: "Work", name: "Idle", bgColor: pickRandomColor(), emoji: "🐷", startTime: Date(), endTime: Date(), elapsedTime: 0, desc: "That's it, the idle time, should be the less the better"),
         ]
         
         return activityList
