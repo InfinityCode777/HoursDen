@@ -47,24 +47,24 @@ extension UILabel {
                 labelHeight = frame.size.height
                 testStringHeight = labelText.size(
                     withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]
-                    ).height
+                ).height
                 
                 textAndLabelHeightDiff = labelHeight - testStringHeight
                 
-//                // Use to watch how font is converged
-//                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-//                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+                //                // Use to watch how font is converged
+                //                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
+                //                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
                 
                 
                 if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                     if (textAndLabelHeightDiff < 0) {
                         self.font = font.withSize(fontSizeAverage - 1)
-//                        JLog.debug("Break 1", isShortMsg: true)
+                        //                        JLog.debug("Break 1", isShortMsg: true)
                         break
                     }
                     self.font = font.withSize(fontSizeAverage)
                     #if DEBUG
-//                    JLog.debug("Break 2", isShortMsg: true)
+                    //                    JLog.debug("Break 2", isShortMsg: true)
                     #endif
                     break
                 }
@@ -77,7 +77,7 @@ extension UILabel {
                 }
                 else {
                     self.font = font.withSize(fontSizeAverage)
-//                    JLog.debug("Break 3", isShortMsg: true)
+                    //                    JLog.debug("Break 3", isShortMsg: true)
                     break
                 }
             }
@@ -87,8 +87,8 @@ extension UILabel {
         //        self.font = font.withSize(fontSizeAverage)
         
         JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(self.font)", isShortMsg: true)
-//        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
-//        JLog.debug("Break 4", isShortMsg: true)
+        //        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+        //        JLog.debug("Break 4", isShortMsg: true)
         
     }
     
@@ -157,28 +157,28 @@ extension UILabel {
                 
                 testStringHeight = labelText.size(
                     withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]
-                    ).height
+                ).height
                 testStringWidth = labelText.size(
                     withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]
-                    ).width
+                ).width
                 
                 textAndLabelHeightDiff = labelHeight - testStringHeight
                 textAndLabelWidthDiff = labelWidth - testStringWidth
                 
-//                // Use to watch how font is converged
-//                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
-//                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+                //                                // Use to watch how font is converged
+                //                                JLog.debug("Adjusting font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(fontSizeAverage)", isShortMsg: true)
+                //                                JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
                 
                 
                 if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                     if (textAndLabelHeightDiff < 0) || (textAndLabelWidthDiff < 0)  {
                         self.font = font.withSize(fontSizeAverage - 1)
-//                        JLosg.debug("Break 1", isShortMsg: true)
+                        //                        JLosg.debug("Break 1", isShortMsg: true)
                         break
                     }
                     self.font = font.withSize(fontSizeAverage.rounded(.down))
                     #if DEBUG
-//                    JLog.debug("Break 2", isShortMsg: true)
+                    //                    JLog.debug("Break 2", isShortMsg: true)
                     #endif
                     break
                 }
@@ -191,7 +191,7 @@ extension UILabel {
                 }
                 else {
                     self.font = font.withSize(fontSizeAverage.rounded(.down))
-//                    JLog.debug("Break 3", isShortMsg: true)
+                    //                    JLog.debug("Break 3", isShortMsg: true)
                     break
                 }
             }
@@ -201,8 +201,8 @@ extension UILabel {
         //        self.font = font.withSize(fontSizeAverage)
         
         JLog.debug("Final font (min/max) >> \(minFontSize)/\(maxFontSize) -> \(self.font.pointSize)", isShortMsg: true)
-//        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
-//        JLog.debug("Break 4", isShortMsg: true)
+        //        JLog.debug("Adjusting height (label/font) >> \(labelHeight)/\(testStringHeight)", isShortMsg: true)
+        //        JLog.debug("Break 4", isShortMsg: true)
         
     }
     
